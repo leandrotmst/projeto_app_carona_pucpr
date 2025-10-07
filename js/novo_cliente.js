@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Verifica se há um ID para editar
     const params = new URLSearchParams(window.location.search);
     const clienteId = params.get('id');
 

@@ -54,6 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
             dadosCadastro.ano = anoCarroInput.value;
         }
 
-        alert(`Pré-visualização do Cadastro (${tipo.toUpperCase()}) enviada. Verifique o console.`);
+        window.location.href("../app/feed.html");
     });
 });
