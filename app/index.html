@@ -3,102 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/app.css">
     <title>Carona Universitária | Página Inicial</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'uni-blue': '#1e3a8a', // Azul escuro universitário
-                        'uni-light': '#3b82f6', // Azul claro de destaque
-                        'uni-accent': '#f59e0b', // Laranja de contraste
-                        'uni-bg': '#f3f4f6', // Fundo cinza claro
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Inter for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --uni-blue: #1e3a8a; /* Azul escuro universitário */
+            --uni-light: #3b82f6; /* Azul claro de destaque */
+            --uni-accent: #f59e0b; /* Laranja de contraste */
+            --uni-bg: #f3f4f6; /* Fundo cinza claro */
         }
-    </script>
+        body {
+            background-color: var(--uni-bg);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Utilitários Customizados */
+        .bg-uni-blue { background-color: var(--uni-blue) !important; }
+        .text-uni-blue { color: var(--uni-blue) !important; }
+        .bg-uni-accent { background-color: var(--uni-accent) !important; }
+        .text-uni-accent { color: var(--uni-accent) !important; }
+        .btn-uni-blue { background-color: var(--uni-blue); color: white; border-color: var(--uni-blue); }
+        .btn-uni-blue:hover { background-color: var(--uni-light); border-color: var(--uni-light); }
+        .btn-uni-accent { background-color: var(--uni-accent); color: white; border-color: var(--uni-accent); }
+        .btn-uni-accent:hover { background-color: #e38d0a; border-color: #e38d0a; }
+        .card-shadow-hover:hover { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; transform: translateY(-3px); transition: all 0.3s; }
+        .main-content { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-top: 2rem; padding-bottom: 2rem;}
+    </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-uni-blue">
+    <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-uni-blue fw-bold fs-4" href="index.html">
                 Carona Uni
-            </div>
+            </a>
             <nav>
-                <a href="login.html" class="text-uni-blue hover:text-uni-light font-medium transition duration-150 ease-in-out px-3">
+                <a href="login.html" class="text-uni-blue me-3 text-decoration-none fw-medium">
                     Login
                 </a>
-                <a href="cadastro.html" class="ml-4 px-4 py-2 bg-uni-accent text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition duration-150 ease-in-out">
+                <a href="cadastro.html" class="btn btn-uni-accent fw-semibold shadow-sm">
                     Cadastre-se
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden p-6 sm:p-12">
-            
-            <div class="text-center mb-10">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
-                    Encontre sua Carona Universitária!
-                </h1>
-                <p class="text-lg text-gray-600">
-                    Conecte-se com alunos e professores para viagens seguras e econômicas.
-                </p>
-            </div>
+    <main class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bg-white rounded-4 shadow-lg p-4 p-md-5">
+                        
+                        <div class="text-center mb-5">
+                            <h1 class="fs-2 fw-bolder text-dark mb-2">
+                                Encontre sua Carona Universitária!
+                            </h1>
+                            <p class="lead text-muted">
+                                Conecte-se com alunos e professores para viagens seguras e econômicas.
+                            </p>
+                        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="bg-uni-blue/10 p-6 rounded-xl border-2 border-uni-blue/20 flex flex-col items-center hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <span class="text-5xl text-uni-blue mb-4" role="img" aria-label="Car Icon">🚗</span>
-                    <h2 class="text-xl font-bold text-uni-blue mb-3">
-                        Oferecer Carona
-                    </h2>
-                    <p class="text-center text-gray-700 mb-6">
-                        Você tem um carro? Ajude a comunidade, divida os custos e economize no combustível.
-                    </p>
-                    <a href="#" class="w-full px-6 py-3 text-center bg-uni-blue text-white font-semibold rounded-lg shadow-lg hover:bg-uni-light transition duration-200">
-                        Sou Motorista!
-                    </a>
+                        <div class="row g-4">
+                            
+                            <!-- Card Motorista -->
+                            <div class="col-md-6">
+                                <div class="card p-4 text-center h-100 border-0 shadow-sm card-shadow-hover" style="background-color: rgba(30, 58, 138, 0.05); border-left: 5px solid var(--uni-blue) !important;">
+                                    <span class="fs-1 text-uni-blue mb-3" role="img" aria-label="Car Icon">🚗</span>
+                                    <h2 class="h5 fw-bold text-uni-blue mb-3">
+                                        Oferecer Carona
+                                    </h2>
+                                    <p class="text-muted mb-4">
+                                        Você tem um carro? Ajude a comunidade, divida os custos e economize no combustível.
+                                    </p>
+                                    <a href="cadastro.html?tipo=motorista" class="btn btn-uni-blue fw-semibold mt-auto">
+                                        Sou Motorista!
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Card Passageiro -->
+                            <div class="col-md-6">
+                                <div class="card p-4 text-center h-100 border-0 shadow-sm card-shadow-hover" style="background-color: rgba(245, 158, 11, 0.05); border-left: 5px solid var(--uni-accent) !important;">
+                                    <span class="fs-1 text-uni-accent mb-3" role="img" aria-label="Person icon">🚶</span>
+                                    <h2 class="h5 fw-bold text-uni-accent mb-3">
+                                        Procurar Carona
+                                    </h2>
+                                    <p class="text-muted mb-4">
+                                        Precisa de uma viagem rápida e barata? Encontre motoristas indo para a sua região.
+                                    </p>
+                                    <a href="cadastro.html?tipo=passageiro" class="btn btn-uni-accent fw-semibold mt-auto">
+                                        Sou Passageiro!
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="mt-5 text-center">
+                            <a href="feed.html" class="text-uni-blue text-decoration-none fw-semibold d-inline-flex align-items-center">
+                                Ver Feed de Caronas Disponíveis
+                                <svg class="ms-2" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-
-                <div class="bg-uni-accent/10 p-6 rounded-xl border-2 border-uni-accent/20 flex flex-col items-center hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <span class="text-5xl text-uni-accent mb-4" role="img" aria-label="Person icon">🚶</span>
-                    <h2 class="text-xl font-bold text-uni-accent mb-3">
-                        Procurar Carona
-                    </h2>
-                    <p class="text-center text-gray-700 mb-6">
-                        Precisa de uma viagem rápida e barata? Encontre motoristas indo para a sua região.
-                    </p>
-                    <a href="#" class="w-full px-6 py-3 text-center bg-uni-accent text-white font-semibold rounded-lg shadow-lg hover:bg-yellow-600 transition duration-200">
-                        Sou Passageiro!
-                    </a>
-                </div>
-
             </div>
-            
-            <div class="mt-8 text-center">
-                <a href="#" class="inline-flex items-center text-uni-blue hover:text-uni-light font-semibold">
-                    Ver Feed de Caronas Disponíveis
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-            </div>
-
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white p-4">
-        <div class="max-w-7xl mx-auto text-center text-sm">
-            <p>&copy; 2025 Carona Universitária. Projeto da faculdade!</p>
+    <footer class="bg-dark text-white p-3 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 small">&copy; 2025 Carona Universitária. Projeto da faculdade!</p>
         </div>
     </footer>
 
+    <!-- Bootstrap Bundle JS (inclui Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
