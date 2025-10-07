@@ -36,6 +36,7 @@ function carregaItens(){
             html += "<td>"+lista[i].nome+"</td>";
             html += "<td>"+lista[i].email+"</td>";
             html += "<td>"+lista[i].nasc+"</td>";
+            html += "<td><a href='javascript:editar("+i+")'>Editar</a></td>";
             html += "</tr>";
         }
 
@@ -55,4 +56,8 @@ function excluir(id){
     listaClientes.splice(id,1);
     localStorage.setItem("listaClientes",JSON.stringify(listaClientes));
     window.location.reload();
+}
+
+function editar(id){
+    window.location.href = "novo_cliente.html?id=" + id;
 }
