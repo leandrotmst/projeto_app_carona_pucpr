@@ -24,18 +24,18 @@ function carregaItens(){
         var html = "";
         html += "<table>";
         html += "<tr>";
-        html += "<td>#</td>";
-        html += "<td>Nome</td>";
-        html += "<td>EMail</td>";
-        html += "<td>Nasc</td>";
+        html += "<td> Nome </td>";
+        html += "<td> E-mail </td>";
+        html += "<td> Data de nascimento </td>";
         html += "</tr>";
 
         for(var i=0;i<lista.length;i++){
             html += "<tr>";
-            html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
             html += "<td>"+lista[i].nome+"</td>";
             html += "<td>"+lista[i].email+"</td>";
             html += "<td>"+lista[i].nasc+"</td>";
+            html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
+            html += "<td>|</td>";
             html += "<td><a href='javascript:editar("+i+")'>Editar</a></td>";
             html += "</tr>";
         }

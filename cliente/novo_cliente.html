@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/novo_cliente.css">
     <title>Novo Cliente</title>
 </head>
 <body>
@@ -11,15 +12,30 @@
         <p>
             <div>
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome">
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div>
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" name="telefone" required>
             </div>
             <div>
                 <label for="email">E-Mail</label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="email" name="email" placeholder="E-mail da PUCPR" required>
+            </div>
+            <div>
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua + número + complemento" required>
+            </div>
+            <div>
+                <label for="tipoUsuario">Eu sou:</label>
+                <select id="tipoUsuario" name="tipoUsuario" required>
+                    <option value="passageiro">Passageiro</option>
+                    <option value="motorista">Motorista</option>
+                </select>
             </div>
             <div>
                 <label for="nasc">Data de Nascimento</label>
-                <input type="date" id="nasc" name="nasc">
+                <input type="date" id="nasc" name="nasc" required>
             </div>
             <div>
                 <button type="button" id="enviar">Enviar</button>
