@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             campoCarroContainer.style.display = "none";
             camposCarro.forEach(input => {
                 input.removeAttribute("required");
-                input.value = "";
+                input.value = ""; 
             });
         }
     }
@@ -43,17 +43,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const tipo = tipoUsuarioSelect.value;
         
         let dadosCadastro = {
+            id: Date.now(),
             nome: nome,
             email: email,
             tipo: tipo,
+            carro: null 
         };
 
         if (tipo === "motorista") {
-            dadosCadastro.placa = placaCarroInput.value;
-            dadosCadastro.modelo = modeloCarroInput.value;
-            dadosCadastro.ano = anoCarroInput.value;
+            dadosCadastro.carro = {
+                placa: placaCarroInput.value,
+                modelo: modeloCarroInput.value,
+                ano: anoCarroInput.value
+            };
         }
 
-        window.location.href("../app/feed.html");
+        let listaUsuarios = localStorage.getItem("listaUsuarios") ?
+            JSON.parse(localStorage.getItem("listaUsuarios")) : [];
+
+        listaUsuarios.push(dadosCadastro);
+
+        localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));
+
+        window.location.href = "feed.html";
     });
 });

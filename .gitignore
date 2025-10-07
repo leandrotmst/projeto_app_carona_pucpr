@@ -1,2 +1,30 @@
-.vscode
-vscode
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Arquivos de IDEs e Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.bak
+*.swp
+
+# Arquivos de Dependências (se você usar Composer ou NPM)
+/vendor/
+/node_modules/
+
+# Logs e Dados de Sessão
+*.log
+*.sql
+*.zip
+*.tar.gz
+
+# Arquivos de Ambiente (se você tiver variáveis de ambiente)
+.env
+.env.example
+
+# Arquivos de Cache
+/cache/
+*.tmp
