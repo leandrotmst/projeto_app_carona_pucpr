@@ -1,63 +1,103 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if(!validaSessao()){
-        window.location.href = '../index.html';
-    }else{
-        carregaItens();
-    }    
+  // Nota: Usamos a chave 'listaUsuarios' para ser consistente com o cadastro/login.
+  if (!validaSessao()) {
+    // Redireciona se não houver sessão ativa
+    window.location.href = "../index.html";
+  } else {
+    carregaItens();
+  }
 });
 
-document.getElementById("novo").addEventListener("click", function(){
-    window.location.href = "novo_cliente.html";
+document.getElementById("novo").addEventListener("click", function () {
+  // Redireciona para o formulário de cadastro
+  window.location.href = "novo_cliente.html";
 });
 
-function validaSessao(){
-    if(localStorage.getItem("sessao")){
-        return true;
-    }else{
-        return false;
-    }
+function validaSessao() {
+  // Simulação de validação de sessão
+  if (localStorage.getItem("sessao")) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function carregaItens(){
-    if(localStorage.getItem("listaClientes")){
-        var lista = JSON.parse(localStorage.getItem("listaClientes"));
-        var html = "";
-        html += "<table>";
-        html += "<tr>";
-        html += "<td> Nome </td>";
-        html += "<td> E-mail </td>";
-        html += "<td> Data de nascimento </td>";
-        html += "</tr>";
+function carregaItens() {
+  // Usa a chave 'listaUsuarios'
+  const listaUsuariosJSON = localStorage.getItem("listaUsuarios");
 
-        for(var i=0;i<lista.length;i++){
-            html += "<tr>";
-            html += "<td>"+lista[i].nome+"</td>";
-            html += "<td>"+lista[i].email+"</td>";
-            html += "<td>"+lista[i].nasc+"</td>";
-            html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
-            html += "<td>|</td>";
-            html += "<td><a href='javascript:editar("+i+")'>Editar</a></td>";
-            html += "</tr>";
-        }
+  if (listaUsuariosJSON) {
+    var lista = JSON.parse(listaUsuariosJSON);
+    var html = "";
 
-        html += "</table>";
-        document.getElementById("lista").innerHTML = html;
-    }else{
-        var obj = {nome: "teste", email: "teste", nasc: "teste"};
-        var lista = [];
-        lista.push(obj);
-        localStorage.setItem("listaClientes",JSON.stringify(lista));
-        window.location.reload();
+    html +=
+      "<table border='1' style='width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px;'>";
+    html += "<tr>";
+    html += "<th style='padding: 8px;'> Nome </th>";
+    html += "<th style='padding: 8px;'> E-mail </th>";
+    html += "<th style='padding: 8px;'> Tipo </th>";
+    html += "<th style='padding: 8px;'> Veículo </th>";
+    html += "<th style='padding: 8px;'> Ações </th>";
+    html += "</tr>";
+
+    for (var i = 0; i < lista.length; i++) {
+      const usuario = lista[i];
+      const tipo = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1); // Capitaliza
+
+      let veiculo = "N/A";
+      if (usuario.tipo === "motorista" && usuario.carro) {
+        const carro = usuario.carro;
+        veiculo = `${carro.modelo} (${carro.placa}) - ${carro.ano}`;
+      }
+
+      html += "<tr>";
+      html += "<td style='padding: 8px;'>" + usuario.nome + "</td>";
+      html += "<td style='padding: 8px;'>" + usuario.email + "</td>";
+      html += "<td style='padding: 8px;'><strong>" + tipo + "</strong></td>";
+      html += "<td style='padding: 8px;'>" + veiculo + "</td>";
+      html += "<td style='padding: 8px;'>";
+      html += "<a href='javascript:editar(" + i + ")'>Editar</a> | ";
+      html += "<a href='javascript:excluir(" + i + ")'>Excluir</a>";
+      html += "</td>";
+      html += "</tr>";
     }
-}
 
-function excluir(id){
-    var listaClientes = JSON.parse(localStorage.getItem("listaClientes"));
-    listaClientes.splice(id,1);
-    localStorage.setItem("listaClientes",JSON.stringify(listaClientes));
+    html += "</table>";
+    document.getElementById("lista").innerHTML = html;
+  } else {
+    // Inicializa com dados de teste, usando a nova estrutura
+    var obj = {
+      id: Date.now(),
+      nome: "Admin Teste",
+      email: "teste@uni.br",
+      nasc: "2000-01-01",
+      tipo: "motorista",
+      telefone: "999999999",
+      endereco: "Rua Exemplo, 123",
+      carro: { placa: "ABC-1234", modelo: "Fusca", ano: "1980" },
+    };
+    localStorage.setItem("listaUsuarios", JSON.stringify([obj]));
     window.location.reload();
+  }
 }
 
-function editar(id){
-    window.location.href = "novo_cliente.html?id=" + id;
+function excluir(id) {
+  // Usa a chave 'listaUsuarios'
+  var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios"));
+
+  // Confirmação (seria melhor com um modal)
+  if (
+    confirm(
+      `Tem certeza que deseja excluir o usuário ${listaUsuarios[id].nome}?`
+    )
+  ) {
+    listaUsuarios.splice(id, 1);
+    localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));
+    window.location.reload();
+  }
+}
+
+function editar(id) {
+  // Redireciona para o novo_cliente.html (seu formulário unificado)
+  window.location.href = "novo_cliente.html?id=" + id;
 }
