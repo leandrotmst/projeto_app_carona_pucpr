@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Nota: Usamos a chave 'listaUsuarios' para ser consistente com o cadastro/login.
   if (!validaSessao()) {
-    // Redireciona se não houver sessão ativa
     window.location.href = "../index.html";
   } else {
     carregaItens();
@@ -9,12 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("novo").addEventListener("click", function () {
-  // Redireciona para o formulário de cadastro
   window.location.href = "novo_cliente.html";
 });
 
 function validaSessao() {
-  // Simulação de validação de sessão
   if (localStorage.getItem("sessao")) {
     return true;
   } else {
@@ -23,7 +19,6 @@ function validaSessao() {
 }
 
 function carregaItens() {
-  // Usa a chave 'listaUsuarios'
   const listaUsuariosJSON = localStorage.getItem("listaUsuarios");
 
   if (listaUsuariosJSON) {
@@ -42,7 +37,7 @@ function carregaItens() {
 
     for (var i = 0; i < lista.length; i++) {
       const usuario = lista[i];
-      const tipo = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1); // Capitaliza
+      const tipo = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1);
 
       let veiculo = "N/A";
       if (usuario.tipo === "motorista" && usuario.carro) {
@@ -65,7 +60,6 @@ function carregaItens() {
     html += "</table>";
     document.getElementById("lista").innerHTML = html;
   } else {
-    // Inicializa com dados de teste, usando a nova estrutura
     var obj = {
       id: Date.now(),
       nome: "Admin Teste",
@@ -82,10 +76,8 @@ function carregaItens() {
 }
 
 function excluir(id) {
-  // Usa a chave 'listaUsuarios'
   var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios"));
 
-  // Confirmação (seria melhor com um modal)
   if (
     confirm(
       `Tem certeza que deseja excluir o usuário ${listaUsuarios[id].nome}?`
@@ -98,6 +90,5 @@ function excluir(id) {
 }
 
 function editar(id) {
-  // Redireciona para o novo_cliente.html (seu formulário unificado)
   window.location.href = "novo_cliente.html?id=" + id;
 }

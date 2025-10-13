@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cadastro | Carona Uni Admin</title>
-	<!-- O estilo simples (se houver) pode vir daqui -->
 	<link rel="stylesheet" href="../css/novo_cliente.css">
 </head>
 
@@ -13,7 +12,6 @@
 	<div>
 		<h1>Cadastre-se</h1>
 
-		<!-- O ID 'cadastroForm' é necessário para o JS enviar os dados -->
 		<form id="cadastroForm">
 			<div>
 				<label for="nome">Nome</label>
@@ -32,7 +30,6 @@
 				<input type="text" id="endereco" name="endereco" placeholder="Rua + número + complemento" required>
 			</div>
 
-			<!-- SELECT QUE CONTROLA A VISIBILIDADE (ID: tipoUsuario) -->
 			<div>
 				<label for="tipoUsuario">Eu sou:</label>
 				<select id="tipoUsuario" name="tipoUsuario" required>
@@ -46,8 +43,6 @@
 				<input type="date" id="nasc" name="nasc" required>
 			</div>
 
-			<!-- CONTÊINER DO CARRO: (ID: campoCarroContainer) -->
-			<!-- O JS (novo_cliente.js) vai injetar 'display: none' se o valor for 'passageiro' -->
 			<div id="campoCarroContainer">
 				<h3>Detalhes do Veículo</h3>
 
@@ -66,10 +61,8 @@
 					<input type="number" id="anoCarro" name="anoCarro" min="1990" max="2099" placeholder="Ex: 2018">
 				</div>
 			</div>
-			<!-- FIM CONTÊINER DO CARRO -->
 
 			<div>
-				<!-- O ID 'cadastrar' é usado no JS para a submissão -->
 				<button type="submit" id="cadastrar">Cadastrar</button>
 			</div>
 		</form>
