@@ -2,22 +2,38 @@ document.getElementById("entrar").addEventListener('click',function(){
     login();
 });
 async function login(){
-    var email = document.getElementById("email").value;
+    var user = document.getElementById("user").value;
     var senha = document.getElementById("senha").value;
 
-    const fd = new FormData();
-    fd.append("email", email);
-    fd.append("senha", senha);
+    if(user==="admin" && senha==="admin"){
+        const fd = new FormData();
+        fd.append("user", user);
+        fd.append("senha", senha);
 
-    const retorno = await fetch("php/login.php",{
-        method: "POST",
-        body: fd
-    });
-    const resposta = await retorno.json();
-    
-    // Repositório LOCALSTORAGE
-    localStorage.setItem("sessao",JSON.stringify(resposta));
+        const retorno = await fetch("php/login.php",{
+            method: "POST",
+            body: fd
+        });
+        const resposta = await retorno.json();
+        
+        // Login Admin
+        window.location.href = "home/index.html";
+    }
+    else{
+        const fd = new FormData();
+        fd.append("user", user);
+        fd.append("senha", senha);
 
-    // Deu certo!
-    window.location.href = "home/index.html";
+        const retorno = await fetch("php/login.php",{
+            method: "POST",
+            body: fd
+        });
+        const resposta = await retorno.json();
+        
+        // Repositório LOCALSTORAGE
+        localStorage.setItem("sessao",JSON.stringify(resposta));
+
+        // Login Admin
+        window.location.href = "app/index.html";
+    }
 }
