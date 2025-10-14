@@ -1,55 +1,108 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("cadastroForm");
+    const enviarButton = document.getElementById('enviar');
+    const formTitulo = document.getElementById('form-titulo');
+
+    const tipoUsuarioSelect = document.getElementById('tipoUsuario');
+    const campoCarroContainer = document.getElementById('campoCarroContainer');
+    const camposCarro = campoCarroContainer.querySelectorAll('input');
+
     const params = new URLSearchParams(window.location.search);
-    const clienteId = params.get('id');
+    const usuarioId = params.get('id');
+    const isEditing = usuarioId !== null;
 
-    if (clienteId !== null) {
-        carregarDadosUsuario(clienteId);
-        document.getElementById('enviar').textContent = 'Salvar Alterações';
+    function toggleCamposCarro() {
+        if (tipoUsuarioSelect.value === 'motorista') {
+            campoCarroContainer.style.display = 'block';
+            camposCarro.forEach(input => input.setAttribute('required', 'required'));
+        } else {
+            campoCarroContainer.style.display = 'none';
+            camposCarro.forEach(input => input.removeAttribute('required'));
+        }
+    }
+
+    function carregarDadosUsuario(id) {
+        const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios") || "[]");
+        const usuario = listaUsuarios[parseInt(id)];
+
+        if (usuario) {
+            formTitulo.textContent = 'Editar Usuário';
+            
+            document.getElementById("nome").value = usuario.nome || '';
+            document.getElementById("telefone").value = usuario.telefone || '';
+            document.getElementById("email").value = usuario.email || '';
+            document.getElementById("endereco").value = usuario.endereco || '';
+
+            tipoUsuarioSelect.value = usuario.tipo || '';
+
+            document.getElementById("nasc").value = usuario.nasc || '';
+
+            if (usuario.tipo === 'motorista' && usuario.carro) {
+                document.getElementById("placaCarro").value = usuario.carro.placa || '';
+                document.getElementById("modeloCarro").value = usuario.carro.modelo || '';
+                document.getElementById("anoCarro").value = usuario.carro.ano || '';
+            }
+
+            toggleCamposCarro();
+
+            enviarButton.textContent = 'Salvar Alterações';
+
+        } else if (isEditing) {
+            alert("Usuário não encontrado.");
+            window.location.href = "index.html";
+        }
+    }
+
+    if (isEditing) {
+        carregarDadosUsuario(usuarioId); 
     } else {
-        document.getElementById('enviar').textContent = 'Salvar Usuário';
+        formTitulo.textContent = 'Cadastrar Novo Usuário';
+        enviarButton.textContent = 'Cadastrar';
+        campoCarroContainer.style.display = 'none';
     }
-});
+    
+    tipoUsuarioSelect.addEventListener('change', toggleCamposCarro);
 
-function carregarDadosUsuario(id) {
-    const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios"));
-    if (listaUsuarios && listaUsuarios[id]) {
-        const cliente = listaUsuarios[id];
-        document.getElementById("nome").value = cliente.nome;
-        document.getElementById("email").value = cliente.email;
-        document.getElementById("nasc").value = cliente.nasc;
-    }
-}
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        
+        const nome = document.getElementById("nome").value;
+        const telefone = document.getElementById("telefone").value;
+        const email = document.getElementById("email").value;
+        const endereco = document.getElementById("endereco").value;
+        const tipo = tipoUsuarioSelect.value;
+        const nasc = document.getElementById("nasc").value;
+        
+        let novoUsuario = {
+            nome: nome,
+            telefone: telefone,
+            email: email,
+            endereco: endereco,
+            tipo: tipo,
+            nasc: nasc,
+            carro: null
+        };
 
-document.getElementById("enviar").addEventListener("click", function() {
-    const params = new URLSearchParams(window.location.search);
-    const clienteId = params.get('id');
+        if (tipo === 'motorista') {
+            novoUsuario.carro = {
+                placa: document.getElementById("placaCarro").value,
+                modelo: document.getElementById("modeloCarro").value,
+                ano: document.getElementById("anoCarro").value
+            };
+        }
 
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const nasc = document.getElementById("nasc").value;
+        let listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios") || "[]");
 
-    if (!nome || !email || !nasc) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+        if (isEditing) {
+            listaUsuarios[parseInt(usuarioId)] = novoUsuario;
+        } else {
+            listaUsuarios.push(novoUsuario);
+        }
 
-    const novoCliente = {
-        nome: nome,
-        email: email,
-        nasc: nasc
-    };
+        localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));
+        
+        console.log("Usuário salvo:", novoUsuario);
 
-    let listaUsuarios = localStorage.getItem("listaUsuarios") ?
-        JSON.parse(localStorage.getItem("listaUsuarios")) : [];
-
-    if (clienteId !== null) {
-        // Editando
-        listaUsuarios[clienteId] = novoCliente;
-    } else {
-        // Insere
-        listaUsuarios.push(novoCliente);
-    }
-
-    localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));
-    window.location.href = "index.html"; // Redirecionando
+        window.location.href = "index.html"; 
+    });
 });
