@@ -1,6 +1,7 @@
 document.getElementById("entrar").addEventListener('click',function(){
     login();
 });
+
 async function login(){
     var user = document.getElementById("user").value;
     var senha = document.getElementById("senha").value;
@@ -30,10 +31,9 @@ async function login(){
         });
         const resposta = await retorno.json();
         
-        // Repositório LOCALSTORAGE
         localStorage.setItem("sessao",JSON.stringify(resposta));
 
-        // Login Admin
+        // Login User
         window.location.href = "app/index.html";
     }
 }
