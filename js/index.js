@@ -6,7 +6,7 @@ async function login(){
     var user = document.getElementById("user").value;
     var senha = document.getElementById("senha").value;
 
-    if(user==="admin" && senha==="admin"){
+    if(user.trim()==="admin" && senha.trim()==="admin"){
         const fd = new FormData();
         fd.append("user", user);
         fd.append("senha", senha);
