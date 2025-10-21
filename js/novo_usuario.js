@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         obj.telefone = document.getElementById("telefone").value;
         obj.email = document.getElementById("email").value;
         obj.nasc = document.getElementById("nasc").value;
-        obj.email = document.getElementById("email").value;
         obj.tipo = document.getElementById("tipoUsuario").value;
         
         var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios") 
