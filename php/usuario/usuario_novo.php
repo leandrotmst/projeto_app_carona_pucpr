@@ -1,5 +1,5 @@
 <?php
-    include_once('conexao.php');
+    include_once('../conexao.php');
 
     // Simulando as informações que vem do front
     $nome       = "Leandro"; // $_POST['nome'];

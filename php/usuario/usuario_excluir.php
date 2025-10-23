@@ -1,5 +1,5 @@
 <?php
-    include_once('conexao.php');
+    include_once('../conexao.php');
 
     // Recuperando informações do Banco de Dados
 
