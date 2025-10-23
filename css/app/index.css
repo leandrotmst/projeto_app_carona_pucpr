@@ -1,16 +1,29 @@
 :root {
-  --uni-blue: #1e3a8a; 
-  --uni-light: #3b82f6;
-  --uni-accent: #f59e0b;
-  --uni-bg: #f3f4f6;
+    --uni-blue: #1e3a8a; 
+    --uni-light: #3b82f6;
+    --uni-accent: #f59e0b;
+    --uni-bg: #f3f4f6;
 }
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
 body {
-  background-color: var(--uni-bg);
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background-color: var(--uni-bg);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+footer{
+    margin: 0;
+    border: 0;
+    padding: -5px;
+}
+
 .bg-uni-blue { background-color: var(--uni-blue) !important; }
 .text-uni-blue { color: var(--uni-blue) !important; }
 .bg-uni-accent { background-color: var(--uni-accent) !important; }

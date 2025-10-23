@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
         localStorage.setItem("listaUsuarios",JSON.stringify(listaUsuarios));
-        window.location.href = "../user/index.html";
+        window.location.href = "../../home/user/index.html";
     });
 });
 
@@ -55,6 +55,6 @@ function carregarDadosUsuario(usuarioId){
         document.getElementById("tipoUsuario").value = listaUsuarios[id].tipo;
     }else{
         // ID inválido -> Redireciona
-        window.location.href = "index.html";
+        window.location.href = "../../home/user/index.html";
     }
 }

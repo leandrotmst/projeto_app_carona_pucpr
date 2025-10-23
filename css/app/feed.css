@@ -1,0 +1,15 @@
+:root {
+    --uni-blue: #1e3a8a; 
+    --uni-accent: #f59e0b;
+}
+body {
+    background-color: #f3f4f6; /* Cor de fundo */
+    font-family: 'Inter', sans-serif;
+}
+.bg-uni-blue { background-color: var(--uni-blue) !important; }
+.text-uni-blue { color: var(--uni-blue) !important; }
+.bg-uni-accent { background-color: var(--uni-accent) !important; }
+.text-uni-accent { color: var(--uni-accent) !important; }
+/* Classes personalizadas para bordas laterais nos cards Bootstrap */
+.card-motorista { border-left: 5px solid var(--uni-blue); }
+.card-passageiro { border-left: 5px solid var(--uni-accent); }

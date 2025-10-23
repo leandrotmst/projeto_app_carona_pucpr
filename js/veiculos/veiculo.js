@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     if(!validaSessao()){
-        window.location.href = '../index.html';
+        window.location.href = '../../home/veiculos/index.html';
     }else{
         carregaItens();
     }    
 });
 
 document.getElementById("novo").addEventListener("click", function(){
-    window.location.href = "novo_veiculo.html";
+    window.location.href = "../../home/veiculos/novo_veiculo.html";
 });
 
 function validaSessao(){
@@ -63,5 +63,5 @@ function excluir(id){
 // função para editar
 function editar(id){
     // Redireciona e manda o ID na URL
-    window.location.href = 'novo_veiculo.html?id='+id;
+    window.location.href = '../../home/veiculos/novo_veiculo.html?id='+id;
 }

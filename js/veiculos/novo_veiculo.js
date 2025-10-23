@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
         localStorage.setItem("listaVeiculos",JSON.stringify(listaVeiculos));
-        window.location.href = "index.html";
+        window.location.href = "../../home/veiculos/index.html";
     });
 });
 
@@ -52,6 +52,6 @@ function carregarDadosVeiculo(veiculoId){
         document.getElementById("cor").value = listaVeiculos[id].cor;
     }else{
         // ID inválido -> Redireciona
-        window.location.href = "index.html";
+        window.location.href = "../../home/veiculos/index.html";
     }
 }
