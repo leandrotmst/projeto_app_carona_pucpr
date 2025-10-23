@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,20 @@
 <body>
     <div>
         <p><h1>Login</h1></p>
-        <div>
-            <label for="email">E-mail</label>
-            <input type="text" name="email" id="email">
-        </div>
-        <div>
-            <label for="senha">Senha</label>
-            <input type="text" name="senha" id="senha">
-        </div>
-        <div>
-            <button type="button" id="entrar">Entrar</button>
-        </div>
+        <form id="loginForm">
+            <div>
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div>
+                <label for="senha">Senha</label>
+                <input type="text" name="senha" id="senha">
+            </div>
+            <div>
+                <button type="submit" id="entrar">Entrar</button>
+            </div>
+        </form>
     </div>
-    <script src="js/index.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
