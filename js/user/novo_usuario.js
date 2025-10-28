@@ -1,60 +1,39 @@
-document.addEventListener("DOMContentLoaded", ()=>{
-    const params = new URLSearchParams(window.location.search);
-    const usuarioId = params.get('id');
-    const isEditing = usuarioId !== null; // Pega o ID na URL
-    const titulo = document.getElementById("form-titulo"); // Título da página
-    const nomeBotao = document.getElementById("enviar"); // Escrita no botão
-
-    if(isEditing){
-        // Se achar ID na URL -> Muda o título e nome no botão para edição 
-        titulo.textContent = "Atualizar Usuário";
-        nomeBotao.textContent = "Salvar Alterações";
-        carregarDadosUsuario(usuarioId);
-    }
-    else{
-        // Senão -> Muda o título e nome no botão para cadastro 
-        titulo.textContent = "Cadastrar novo Usuário";
-        nomeBotao.textContent = "Cadastrar";
-    }  
-    document.getElementById("enviar").addEventListener("click", function(event){
-        event.preventDefault();
-
-        var obj = {nome: "", telefone: "", email:"", nasc: "", tipo: ""};
-        obj.nome = document.getElementById("nome").value;
-        obj.telefone = document.getElementById("telefone").value;
-        obj.email = document.getElementById("email").value;
-        obj.nasc = document.getElementById("nasc").value;
-        obj.tipo = document.getElementById("tipoUsuario").value;
-        
-        var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios") 
-        || "[]");
-
-        if(isEditing){
-            // Edição
-            listaUsuarios[parseInt(usuarioId)] = obj;
-        }else{
-            // Cadastra
-            listaUsuarios.push(obj);
-        }
-
-        localStorage.setItem("listaUsuarios",JSON.stringify(listaUsuarios));
-        window.location.href = "../../home/user/index.html";
-    });
+document.getElementById('enviar').addEventListener('click', () => {
+    novo();
 });
 
-// Preenche os dados para edição
-function carregarDadosUsuario(usuarioId){
-    var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios")||"[]");
-    const id = parseInt(usuarioId);
+async function novo(){
+    var nome = document.getElementById("nome").value;
+    var telefone = document.getElementById("telefone").value;
+    var email = document.getElementById("email").value;
+    var senha = document.getElementById("senha").value;
+    var confsenha = document.getElementById("confsenha").value;
+    var nasc = document.getElementById("nasc").value;
+    var tipo = document.getElementById("tipoUsuario").value;
 
-    if(listaUsuarios[id]){
-        document.getElementById("nome").value = listaUsuarios[id].nome;
-        document.getElementById("telefone").value = listaUsuarios[id].telefone;
-        document.getElementById("nasc").value = listaUsuarios[id].nasc;
-        document.getElementById("email").value = listaUsuarios[id].email;
-        document.getElementById("tipoUsuario").value = listaUsuarios[id].tipo;
-    }else{
-        // ID inválido -> Redireciona
-        window.location.href = "../../home/user/index.html";
+    if(senha===confsenha){
+        const fd = new FormData();
+        fd.append('nome', nome);
+        fd.append('telefone', telefone);
+        fd.append('email', email);
+        fd.append('senha', senha);
+        fd.append('nasc', nasc);
+        fd.append('tipo', tipo);
+
+        const retorno = await fetch("../../php/usuario/usuario_novo.php",
+            {
+                method: "POST",
+                body: fd
+            });
+        const reposta = await retorno.json();
+
+        if(resposta.status=='ok'){
+            window.location.href = 'feed.html';
+        }else{
+            alert("Erro: " + resposta.mensagem);
+        }
+    }
+    else{
+        alert('As senhas devem ser as mesmas');
     }
 }

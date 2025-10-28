@@ -9,17 +9,14 @@
     if(isset($_GET['id'])){
         // Simulando as informações que vem do front
         $nome       = $_POST['nome'];
-        $telefone   = $_POST['telefone'];
-        $email      = $_POST['email'];
-        $senha      = $_POST['senha'];
-        $nasc       = $_POST['nasc'];
-        $tipo       = $_POST['tipo'];
+        $modelo     = $_POST['modelo'];
+        $cor        = $_POST['cor'];
+        $ano        = $_POST['ano'];
     
         // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE usuario SET nome = ?, telefone = ?, 
-        email = ?, senha = ?, nasc = ?, tipo = ? WHERE id_usuario = ?");
-        $stmt->bind_param("sssss",$nome, $telefone, $email, $senha, 
-        $nasc, $tipo, $_GET['id']);
+        $stmt = $conexao->prepare("UPDATE veiculo SET nome = ?, modelo = ?, 
+        cor = ?, ano = ? WHERE id_veiculo = ?");
+        $stmt->bind_param("sssss",$nome, $modelo, $cor, $ano, $_GET['id']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

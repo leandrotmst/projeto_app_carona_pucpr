@@ -1,68 +1,62 @@
-document.addEventListener("DOMContentLoaded", () => {
-    if(!validaSessao()){
-        window.location.href = '../../home/user/index.html';
-    }else{
-        carregaItens();
-    }    
+document.addEventListener('DOMContentLoaded', () => {
+    buscar();
 });
 
-document.getElementById("novo").addEventListener("click", function(){
-    window.location.href = "../../home/user/novo_usuario.html";
+document.getElementById('novo').addEventListener('click', () => {
+    window.location.href = "novo_usuario.html";
 });
 
-function validaSessao(){
-    if(localStorage.getItem("sessao")){
-        return true;
-    }else{
-        return false;
+async function buscar(){
+    const retorno = await fetch ("../../php/usuario/usuario_get.php");
+    const resposta = await retorno.json();
+
+    if(resposta.status=='ok'){
+        preencherTabela(resposta.data);
     }
 }
 
-function carregaItens(){
-    if(localStorage.getItem("listaUsuarios")){
-        var lista = JSON.parse(localStorage.getItem("listaUsuarios"));
-        var html = "";
-        html += "<table>";
-        html += "<tr>";
-        html += "<td>Nome</td>";
-        html += "<td>E-Mail</td>";
-        html += "<td>Nasc</td>";
-        html += "<td>Tipo</td>";
-        html += "<td>Ações</td>";
-        html += "</tr>";
+async function excluir(id){
+    const retorno = await fetch('../../php/usuario/usuario_excluir.php?id='+id);
+    const resposta = await retorno.json();
 
-        for(var i=0;i<lista.length;i++){
-            html += "<tr>";
-            html += "<td>"+lista[i].nome+"</td>";
-            html += "<td>"+lista[i].email+"</td>";
-            html += "<td>"+lista[i].nasc+"</td>";
-            html += "<td>"+lista[i].tipo+"</td>";
-            html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
-            html += "<td><a href='javascript:editar("+i+")'>Editar</a></td>";
-            html += "</tr>";
-        }
-
-        html += "</table>";
-        document.getElementById("lista").innerHTML = html;
-    }else{
-        var obj = {nome: "teste", telefone: "teste", email:"teste@teste", nasc: "2000-01-01", tipo: "Passageiro"};
-        var lista = [];
-        lista.push(obj);
-        localStorage.setItem("listaUsuarios",JSON.stringify(lista));
+    if(resposta.status=='ok'){
+        alert(resposta.mensagem);
         window.location.reload();
+    }else{
+        alert(resposta.mensagem);
     }
 }
 
-// função para excluir
-function excluir(id){
-    var listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios"));
-    listaUsuarios.splice(id,1);
-    localStorage.setItem("listaUsuarios",JSON.stringify(listaUsuarios));
-    window.location.reload();
-}
+function preencherTabela(tabela){
+    var html = `
+        <table>
+            <tr>
+                <th> Nome </th>
+                <th> Telefone </th>
+                <th> E-mail </th>
+                <th> Senha </th>
+                <th> Nascimento </th>
+                <th> Tipo </th>
+            </tr>
+    `;
+    
+    for(var i=0;i<tabela.length;i++){
+        html += `
+            <tr>
+                <td> ${tabela[i].nome} </td>
+                <td> ${tabela[i].telefone} </td>
+                <td> ${tabela[i].email} </td>
+                <td> ${tabela[i].senha} </td>
+                <td> ${tabela[i].nascimento} </td>
+                <td> ${tabela[i].tipo} </td>
+                <td>
+                    <a href='usuario_alterar.html?id=${tabela[i].id}'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id})'>Excluir</a>
+                </td>
+            </tr>
+        `;
 
-// função para editar
-function editar(id){
-    // Redireciona e manda o ID na URL
-    window.location.href = '../../home/user/novo_usuario.html?id='+id;
+    }
+    html += '</table>';
+    document.getElementById('lista').innerHTML = html;
 }

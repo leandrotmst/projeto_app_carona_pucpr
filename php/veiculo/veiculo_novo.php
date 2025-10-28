@@ -7,17 +7,15 @@
     ];
 
     // Simulando as informações que vem do front
-    $nome       = $_POST['nome'];
-    $telefone   = $_POST['telefone'];
-    $email      = $_POST['email'];
-    $senha      = $_POST['senha'];
-    $nasc       = $_POST['nasc'];
-    $tipo       = $_POST['tipo'];
+    $nome     = $_POST['nome'];
+    $modelo   = $_POST['modelo'];
+    $cor      = $_POST['cor'];
+    $ano      = $_POST['ano'];
 
     // Preparando para inserção no banco de dados
-    $stmt = $conexao->prepare("INSERT INTO usuario(nome, telefone, email, 
-    senha, nasc, tipo) VALUES(?,?,?,?,?,?)");
-    $stmt->bind_param("ssssss",$nome, $telefone, $email, $senha, $nasc, $tipo);
+    $stmt = $conexao->prepare("INSERT INTO veiculo(nome, modelo, cor, 
+    ano) VALUES(?,?,?,?)");
+    $stmt->bind_param("ssss",$nome, $modelo, $cor, $ano);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

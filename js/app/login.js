@@ -4,8 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
     
-    // Verificar email e senha
-    // Enviar código para login
+    // GET -> Verificar email e senha
     
     // Redireciona para o feed se tudo der certo!
     window.location.href = "feed.html";

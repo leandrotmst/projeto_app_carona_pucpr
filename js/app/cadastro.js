@@ -1,35 +1,39 @@
-document.getElementById("cadastroForm").addEventListener("submit", (event) => {
-    event.preventDefault(); 
-    
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
-    const confsenha = document.getElementById("confsenha").value;
-    const nasc = document.getElementById("nasc").value;
-    const tipo = document.getElementById("tipoUsuario").value;
+document.getElementById("cadastrar").addEventListener("click", () => {
+    cadastro();
+}); 
+   
+async function cadastro(){
+    var nome      = document.getElementById("nome").value;
+    var telefone  = document.getElementById("telefone").value;
+    var email     = document.getElementById("email").value;
+    var senha     = document.getElementById("senha").value;
+    var confsenha = document.getElementById("confsenha").value;
+    var nasc      = document.getElementById("nasc").value;
+    var tipo      = document.getElementById("tipoUsuario").value;
     
     if(senha===confsenha){
-        let dadosCadastro = {
-            id: Date.now(),
-            nome: nome,
-            telefone: telefone,
-            email: email,
-            senha: senha,
-            nasc: nasc,
-            tipo: tipo
-        };
-        
-        let listaUsuarios = localStorage.getItem("listaUsuarios") ?
-            JSON.parse(localStorage.getItem("listaUsuarios")) : [];
-    
-        listaUsuarios.push(dadosCadastro);
-    
-        localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));
-    
-    }else{
-        alert("Senhas diferentes");
+        const fd = new FormData();
+        fd.append('nome', nome);
+        fd.append('telefone', telefone);
+        fd.append('email', email);
+        fd.append('senha', senha);
+        fd.append('nasc', nasc);
+        fd.append('tipo', tipo);
+
+        const retorno = await fetch("../../php/usuario/usuario_novo.php",
+        {
+            method: "POST",
+            body: fd
+        });
+        const resposta = await retorno.json();
+
+        if(resposta.status=='ok'){
+            window.location.href = '../app/feed.html';
+        }else{
+            alert("Erro: " + resposta.mensagem);
+        }
     }
-    
-    window.location.href = "feed.html";
-});
+    else{
+        alert('As senhas devem ser as mesmas');
+    }
+}
