@@ -1,5 +1,5 @@
 <?php
-    include_once('conexao.php');
+    include_once('../conexao.php');
     $retorno = [
         'status'   => '',
         'mensagem' => '',
@@ -7,10 +7,10 @@
     ];
     
     // Recuperando informações do Banco de Dados
-    if(isset($_GET['id'])){
+    if(isset($_GET['id_veiculo'])){
         // Segunda situação - RECEBENDO O ID por GET
         $stmt = $conexao->prepare("SELECT * FROM veiculo WHERE id_veiculo=?");
-        $stmt->bind_param("i",$_GET['id']);
+        $stmt->bind_param("i",$_GET['id_veiculo']);
     }else{
         // Primeira situação - SEM RECEBER O ID por GET
         $stmt = $conexao->prepare("SELECT * FROM veiculo");
@@ -35,7 +35,7 @@
     }else{
         $retorno = [
             'status'   => 'nok',
-            'mensagem' => "Não encontrou registros",
+            'mensagem' => "Não há registros",
             'data'     => []
         ];
     }

@@ -7,14 +7,14 @@
     ];
 
     // Simulando as informações que vem do front
-    $nome     = $_POST['nome'];
-    $modelo   = $_POST['modelo'];
-    $cor      = $_POST['cor'];
-    $ano      = $_POST['ano'];
+    $nome   = $_POST['nome'];
+    $modelo = $_POST['modelo'];
+    $cor    = $_POST['cor'];
+    $ano    = $_POST['ano'];
 
     // Preparando para inserção no banco de dados
-    $stmt = $conexao->prepare("INSERT INTO veiculo(nome, modelo, cor, 
-    ano) VALUES(?,?,?,?)");
+    $stmt = $conexao->prepare("INSERT INTO veiculo(nome, modelo, cor, ano) 
+    VALUES(?,?,?,?)");
     $stmt->bind_param("ssss",$nome, $modelo, $cor, $ano);
     $stmt->execute();
 
