@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('novo').addEventListener('click', () => {
-    window.location.href = "novo_usuario.html";
+    window.location.href = "../app/cadastro.html";
 });
 
 async function buscar(){
@@ -47,7 +47,7 @@ function preencherTabela(tabela){
                 <td> ${tabela[i].telefone} </td>
                 <td> ${tabela[i].email} </td>
                 <td> ${tabela[i].senha} </td>
-                <td> ${tabela[i].nascimento} </td>
+                <td> ${tabela[i].nasc} </td>
                 <td> ${tabela[i].tipo} </td>
                 <td>
                     <a href='usuario_alterar.html?id=${tabela[i].id}'>Alterar</a>

@@ -28,12 +28,10 @@ async function cadastro(){
         const resposta = await retorno.json();
 
         if(resposta.status=='ok'){
-            window.location.href = '../app/feed.html';
+            alert("Sucesso: " + resposta.mensagem);
+            window.location.href = "feed.html";
         }else{
             alert("Erro: " + resposta.mensagem);
         }
-    }
-    else{
-        alert('As senhas devem ser as mesmas');
     }
 }

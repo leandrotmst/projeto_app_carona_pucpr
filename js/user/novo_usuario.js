@@ -21,13 +21,14 @@ async function novo(){
         fd.append('tipo', tipo);
 
         const retorno = await fetch("../../php/usuario/usuario_novo.php",
-            {
-                method: "POST",
-                body: fd
-            });
-        const reposta = await retorno.json();
+        {
+            method: "POST",
+            body: fd
+        });
+        const resposta = await retorno.json();
 
         if(resposta.status=='ok'){
+            alert("Sucesso: " + resposta.mensagem);
             window.location.href = 'feed.html';
         }else{
             alert("Erro: " + resposta.mensagem);
