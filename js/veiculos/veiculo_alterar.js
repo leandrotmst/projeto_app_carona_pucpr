@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function buscar(id){
-    const retorno = await fetch("../../php/veiculo/veiculo_get.php?id="+id);
+    const retorno = await fetch("../../php/veiculo/veiculo_get.php?id_veiculo="+id);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
