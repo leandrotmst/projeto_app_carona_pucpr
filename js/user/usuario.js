@@ -32,11 +32,18 @@ function preencherTabela(tabela){
         <table>
             <tr>
                 <th> Nome </th>
+                <th> | </th>
                 <th> Telefone </th>
+                <th> | </th>
                 <th> E-mail </th>
+                <th> | </th>
                 <th> Senha </th>
+                <th> | </th>
                 <th> Nascimento </th>
+                <th> | </th>
                 <th> Tipo </th>
+                <th> | </th>
+                <th> Ações </th>
             </tr>
     `;
     
@@ -44,11 +51,17 @@ function preencherTabela(tabela){
         html += `
             <tr>
                 <td> ${tabela[i].nome} </td>
+                <td> | </td>
                 <td> ${tabela[i].telefone} </td>
+                <td> | </td>
                 <td> ${tabela[i].email} </td>
+                <td> | </td>
                 <td> ${tabela[i].senha} </td>
+                <td> | </td>
                 <td> ${tabela[i].nasc} </td>
+                <td> | </td>
                 <td> ${tabela[i].tipo} </td>
+                <td> | </td>
                 <td>
                     <a href='usuario_alterar.html?id_usuario=${tabela[i].id_usuario}'>Alterar</a>
                     <a href='#' onClick='excluir(${tabela[i].id_usuario})'>Excluir</a>

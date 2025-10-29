@@ -19,14 +19,15 @@ async function buscar(id){
         document.getElementById('senha').value      = registro.senha;
         document.getElementById('confsenha').value  = registro.senha;
         document.getElementById('nasc').value       = registro.nasc;
-        document.getElementById('tipo').value       = registro.tipo;
+        document.getElementById('tipo').value       = registro.tipo.toLowerCase();
         document.getElementById("id_usuario").value = registro.id_usuario;
     }else{
         alert("Erro, não existe: " + resposta.mensagem);
     }
 }
 
-document.getElementById('salvar').addEventListener('click', () => {
+document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+    e.preventDefault();
     alterar();
 });
 
