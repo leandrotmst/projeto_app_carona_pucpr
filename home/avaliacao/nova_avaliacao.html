@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre sua Avaliação</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="form-titulo">Avaliar Motorista</h1>
+        
+        <form id="avaliacaoForm">
+            <div>
+                <label for="motorista">Nome do Motorista</label>
+                <input type="text" id="motorista" name="motorista" required>
+            </div>
+            <div>
+                <label for="avaliado">ID do Motorista</label>
+                <input type="number" id="id_avaliado" name="id_avaliado" required>
+            </div>
+            <div>
+                <label for="avaliador">ID do Passageiro</label>
+                <input type="number" id="id_avaliador" name="id_avaliador" required>
+            </div>
+
+            <div>
+                <label for="nota">Nota</label>
+                <input type="number" id="nota" name="nota" required/>
+            </div>
+
+            <div>
+                <label for="comentario">Comentário</label>
+                <input type="text" id="comentario" name="comentario" required/>
+            </div>
+
+        </form>
+    </div>
+    <script src="../../js/avaliacao/nova_avaliacao.js"></script>
+</body>
+
+</html>
