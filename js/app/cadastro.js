@@ -9,7 +9,7 @@ async function cadastro(){
     var senha     = document.getElementById("senha").value;
     var confsenha = document.getElementById("confsenha").value;
     var nasc      = document.getElementById("nasc").value;
-    var tipo      = document.getElementById("tipoUsuario").value;
+    var tipo      = document.getElementById("tipo").value;
     
     if(senha===confsenha){
         const fd = new FormData();

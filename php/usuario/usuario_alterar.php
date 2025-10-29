@@ -6,20 +6,20 @@
         'data'     => [],
     ];
 
-    if(isset($_GET['id'])){
+    if(isset($_GET['id_usuario'])){
         // Simulando as informações que vem do front
-        $nome       = $_POST['nome'];
-        $telefone   = $_POST['telefone'];
-        $email      = $_POST['email'];
-        $senha      = $_POST['senha'];
-        $nasc       = $_POST['nasc'];
-        $tipo       = $_POST['tipo'];
+        $nome     = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $email    = $_POST['email'];
+        $senha    = $_POST['senha'];
+        $tipo     = $_POST['tipo'];
+        $nasc     = $_POST['nasc'];
     
         // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE usuario SET nome = ?, telefone = ?, 
-        email = ?, senha = ?, nasc = ?, tipo = ? WHERE id_usuario = ?");
-        $stmt->bind_param("sssss",$nome, $telefone, $email, $senha, 
-        $nasc, $tipo, $_GET['id']);
+        $stmt = $conexao->prepare("UPDATE usuario SET nome=?, telefone=?, 
+        email=?, senha=?, tipo=?, nasc=? WHERE id_usuario=?");
+        $stmt->bind_param("ssssssi",$nome, $telefone, $email, $senha, $tipo,
+        $nasc, $_GET['id_usuario']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

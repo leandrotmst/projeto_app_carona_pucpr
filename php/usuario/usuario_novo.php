@@ -37,5 +37,5 @@
     $stmt->close();
     $conexao->close();
 
-    header("Content-type:application/json;charset:utf-8");
+    header("Content-Type: application/json; charset=utf-8");
     echo json_encode($retorno);

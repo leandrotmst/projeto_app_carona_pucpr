@@ -16,7 +16,7 @@ async function buscar(){
 }
 
 async function excluir(id){
-    const retorno = await fetch('../../php/usuario/usuario_excluir.php?id='+id);
+    const retorno = await fetch('../../php/usuario/usuario_excluir.php?id_usuario='+id);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -50,8 +50,8 @@ function preencherTabela(tabela){
                 <td> ${tabela[i].nasc} </td>
                 <td> ${tabela[i].tipo} </td>
                 <td>
-                    <a href='usuario_alterar.html?id=${tabela[i].id}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id})'>Excluir</a>
+                    <a href='usuario_alterar.html?id_usuario=${tabela[i].id_usuario}'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_usuario})'>Excluir</a>
                 </td>
             </tr>
         `;
