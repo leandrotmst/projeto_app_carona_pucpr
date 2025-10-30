@@ -6,18 +6,19 @@
         'data'     => [],
     ];
 
-    if(isset($_GET['id_veiculo'])){
+    if(isset($_GET['id_avaliacao'])){
         // Simulando as informações que vem do front
-        $nome   = $_POST['nome'];
-        $modelo = $_POST['modelo'];
-        $cor    = $_POST['cor'];
-        $ano    = $_POST['ano'];
+        $id_carona    = (int)$_POST['id_carona'];
+        $id_avaliador = (int)$_POST['id_avaliador'];
+        $id_avaliado  = (int)$_POST['id_avaliado'];
+        $nota         = (int)$_POST['nota'];
+        $comentario   = (int)$_POST['comentario'];
     
         // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE veiculo SET nome=?, modelo=?, cor=?, 
-        ano=? WHERE id_veiculo=?");
-        $stmt->bind_param("ssssi",$nome, $modelo, $cor, $ano, 
-        $_GET['id_veiculo']);
+        $stmt = $conexao->prepare("UPDATE avaliacao SET id_carona=?, id_avaliador=?, 
+        id_avaliado=?, nota=?, comentario=? WHERE id_avaliacao=?");
+        $stmt->bind_param("iiiisi",$nome, $modelo, $cor, $ano, 
+        $_GET['id_avaliacao']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

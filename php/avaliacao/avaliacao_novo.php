@@ -7,15 +7,18 @@
     ];
 
     // Simulando as informações que vem do front
-    $nome   = $_POST['nome'];
-    $modelo = $_POST['modelo'];
-    $cor    = $_POST['cor'];
-    $ano    = $_POST['ano'];
+    $id_carona    = (int)$_POST['id_carona'];
+    $id_avaliador = (int)$_POST['id_avaliador'];
+    $id_avaliado  = (int)$_POST['id_avaliado'];
+    $nota         = (int)$_POST['nota'];
+    $comentario   = $_POST['comentario'];
 
     // Preparando para inserção no banco de dados
-    $stmt = $conexao->prepare("INSERT INTO veiculo(nome, modelo, cor, ano) 
-    VALUES(?,?,?,?)");
-    $stmt->bind_param("ssss",$nome, $modelo, $cor, $ano);
+    $stmt = $conexao->prepare("INSERT INTO avaliacao(id_carona, id_avaliador, 
+    id_avaliado, nota, comentario) 
+    VALUES(?,?,?,?,?)");
+    $stmt->bind_param("iiiis",$id_carona, $id_avaliador, $id_avaliado, $nota, 
+    $comentario);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

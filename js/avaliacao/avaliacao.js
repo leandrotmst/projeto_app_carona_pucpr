@@ -1,69 +1,75 @@
-document.addEventListener("DOMContentLoaded", () => {
-    if(!validaSessao()){
-        window.location.href = '../../home/avaliacao/index.html';
-    }else{
-        carregaItens();
-    }    
+document.addEventListener('DOMContentLoaded', () => {
+    buscar();
 });
 
-document.getElementById("novo").addEventListener("click", function(){
-    window.location.href = "../../home/avaliacao/nova_avaliacao.html";
+document.getElementById('novo').addEventListener('click', () => {
+    window.location.href = "../avaliacao/nova_avaliacao.html";
 });
 
-function validaSessao(){
-    if(localStorage.getItem("sessao")){
-        return true;
-    }else{
-        return false;
+async function buscar(){
+    const retorno = await fetch ("../../php/avaliacao/avaliacao_get.php");
+    const resposta = await retorno.json();
+
+    if(resposta.status=='ok'){
+        preencherTabela(resposta.data);
     }
 }
 
-function gerarEstrelas(quantidade) {
-    let estrelas = '';
-    for (let i = 1; i <= 5; i++) {
-        if (i <= quantidade) {
-            estrelas += '⭐';
-        } else {
-            estrelas += '☆';
-        }
-    }
-    return estrelas;
-}
+async function excluir(id){
+    const retorno = await fetch('../../php/avaliacao/avaliacao_excluir.php?id_avaliacao='+id);
+    const resposta = await retorno.json();
 
-function carregaItens(){
-    if(localStorage.getItem("listaAvaliacoes")){
-        var lista = JSON.parse(localStorage.getItem("listaAvaliacoes"));
-        var html = "";
-        html += "<table>";
-        html += "<tr>";
-        html += "<td>Motorista</td>";
-        html += "<td>Avaliação</td>";
-        html += "<td>Comentário</td>";
-        html += "</tr>";
-
-        for(var i=0;i<lista.length;i++){
-            html += "<tr>";
-            html += "<td>"+lista[i].motorista+"</td>";
-            html += "<td>"+gerarEstrelas(lista[i].avaliacao)+"</td>";
-            html += "<td>"+lista[i].comentario+"</td>";
-            html += "<td>"+new Date(lista[i].data).toLocaleDateString()+"</td>";
-            html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
-            html += "</tr>";
-        }
-
-        html += "</table>";
-        document.getElementById("lista").innerHTML = html;
-    }else{
-        var lista = [];
-        localStorage.setItem("listaAvaliacoes",JSON.stringify(lista));
+    if(resposta.status=='ok'){
+        alert(resposta.mensagem);
         window.location.reload();
+    }else{
+        alert(resposta.mensagem);
     }
 }
 
-// função para excluir
-function excluir(id){
-    var listaAvaliacoes = JSON.parse(localStorage.getItem("listaAvaliacoes"));
-    listaAvaliacoes.splice(id,1);
-    localStorage.setItem("listaAvaliacoes",JSON.stringify(listaAvaliacoes));
-    window.location.reload();
+function preencherTabela(tabela){
+    var html = `
+        <table>
+            <tr>
+                <th> Nome Motorista </th>
+                <th> | </th>
+                <th> ID Carona </th>
+                <th> | </th>
+                <th> ID Motorista </th>
+                <th> | </th>
+                <th> ID Passageiro </th>
+                <th> | </th>
+                <th> Nota </th>
+                <th> | </th>
+                <th> Comentário </th>
+                <th> | </th>
+                <th> Ações </th>
+            </tr>
+    `;
+    
+    for(var i=0;i<tabela.length;i++){
+        html += `
+            <tr>
+                <td> ${tabela[i].motorista} </td>
+                <td> | </td>
+                <td> ${tabela[i].id_carona} </td>
+                <td> | </td>
+                <td> ${tabela[i].id_avaliado} </td>
+                <td> | </td>
+                <td> ${tabela[i].id_avaliador} </td>
+                <td> | </td>
+                <td> ${tabela[i].nota} </td>
+                <td> | </td>
+                <td> ${tabela[i].comentario} </td>
+                <td> | </td>
+                <td>
+                    <a href='avaliacao_alterar.html?id_avaliacao=${tabela[i].id_avaliacao}'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_avaliacao})'>Excluir</a>
+                </td>
+            </tr>
+        `;
+
+    }
+    html += '</table>';
+    document.getElementById('lista').innerHTML = html;
 }

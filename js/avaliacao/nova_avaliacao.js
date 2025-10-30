@@ -1,102 +1,34 @@
-document.addEventListener("DOMContentLoaded", ()=>{
-    const params = new URLSearchParams(window.location.search);
-    const avaliacaoId = params.get('id');
-    const isEditing = avaliacaoId !== null; // Pega o ID na URL
-    const titulo = document.getElementById("form-titulo"); // Título da página
-    const nomeBotao = document.getElementById("enviar"); // Escrita no botão
-
-    if(isEditing){
-        // Se achar ID na URL -> Muda o título e nome no botão para edição 
-        titulo.textContent = "Editar Avaliação";
-        nomeBotao.textContent = "Salvar Alterações";
-        carregarDadosAvaliacao(avaliacaoId);
-    }
-    else{
-        // Senão -> Muda o título e nome no botão para cadastro 
-        titulo.textContent = "Nova Avaliação";
-        nomeBotao.textContent = "Enviar Avaliação";
-    }  
-
-    // Adiciona animação ao hover das estrelas
-    const stars = document.querySelectorAll('.rating label');
-    stars.forEach(star => {
-        star.addEventListener('mouseover', function() {
-            const currentStarValue = this.getAttribute('for').replace('star', '');
-            highlightStars(currentStarValue);
-        });
-    });
-
-    const ratingContainer = document.querySelector('.rating');
-    ratingContainer.addEventListener('mouseout', function() {
-        const selectedStar = document.querySelector('input[name="rating"]:checked');
-        if (selectedStar) {
-            highlightStars(selectedStar.value);
-        } else {
-            resetStars();
-        }
-    });
-
-    document.getElementById("enviar").addEventListener("click", function(event){
-        event.preventDefault();
-
-        var obj = {
-            motorista: document.getElementById("motorista").value,
-            avaliacao: document.querySelector('input[name="rating"]:checked').value,
-            tipo_comentario: document.querySelector
-            ('input[name="tipo_comentario"]:checked').value,
-            comentario: document.getElementById("comentario").value,
-            data: new Date().toISOString()
-        };
-        
-        var listaAvaliacoes = JSON.parse(localStorage.getItem("listaAvaliacoes")||"[]");
-
-        if(isEditing){
-            // Edição
-            listaAvaliacoes[parseInt(avaliacaoId)] = obj;
-        }else{
-            // Cadastra
-            listaAvaliacoes.push(obj);
-        }
-
-        localStorage.setItem("listaAvaliacoes", JSON.stringify(listaAvaliacoes));
-        window.location.href = "../../home/avaliacao/index.html";
-    });
+document.getElementById('enviar').addEventListener('click', () => {
+    novo();
 });
 
-// Preenche os dados para edição
-function carregarDadosAvaliacao(avaliacaoId){
-    var listaAvaliacoes = JSON.parse(localStorage.getItem("listaAvaliacoes")||"[]");
-    const id = parseInt(avaliacaoId);
+async function novo(){
+    var motorista = document.getElementById("motorista").value;
+    var idCarona = document.getElementById("id_carona").value;
+    var idAvaliado = document.getElementById("id_avaliado").value;
+    var idAvaliador = document.getElementById("id_avaliador").value;
+    var nota = document.getElementById("nota").value;
+    var comentario = document.getElementById("comentario").value;
 
-    if(listaAvaliacoes[id]){
-        document.getElementById("motorista").value = listaAvaliacoes[id].motorista;
-        document.querySelector(`input[name="rating"][value="
-            ${listaAvaliacoes[id].avaliacao}"]`).checked = true;
-        document.querySelector(`input[name="tipo_comentario"]
-            [value="${listaAvaliacoes[id].tipo_comentario}"]`).checked = true;
-        document.getElementById("comentario").value = listaAvaliacoes[id].comentario;
-        highlightStars(listaAvaliacoes[id].avaliacao);
+    const fd = new FormData();
+    fd.append('motorista', motorista);
+    fd.append('id_carona', idCarona);
+    fd.append('id_avaliado', idAvaliado);
+    fd.append('id_avaliador', idAvaliador);
+    fd.append('nota', nota);
+    fd.append('comentario', comentario);
+
+    const retorno = await fetch("../../php/usuario/avaliacao_novo.php",
+    {
+        method: "POST",
+        body: fd
+    });
+    const resposta = await retorno.json();
+
+    if(resposta.status=='ok'){
+        alert("Sucesso: " + resposta.mensagem);
+        window.location.href = 'feed.html';
     }else{
-        // ID inválido -> Redireciona
-        window.location.href = "../../home/avaliacao/index.html";
+        alert("Erro: " + resposta.mensagem);
     }
-}
-
-function highlightStars(value) {
-    const stars = document.querySelectorAll('.rating label');
-    stars.forEach(star => {
-        const starValue = star.getAttribute('for').replace('star', '');
-        if (starValue <= value) {
-            star.style.color = '#ffd700';
-        } else {
-            star.style.color = '#ddd';
-        }
-    });
-}
-
-function resetStars() {
-    const stars = document.querySelectorAll('.rating label');
-    stars.forEach(star => {
-        star.style.color = '#ddd';
-    });
 }

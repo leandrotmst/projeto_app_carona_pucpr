@@ -9,10 +9,10 @@
     ];
     
     // Recuperando informações do Banco de Dados
-    if(isset($_GET['id_veiculo'])){
+    if(isset($_GET['id_avaliacao'])){
         // Segunda situação - RECEBENDO O ID por GET
-        $stmt = $conexao->prepare("DELETE FROM veiculo WHERE id_veiculo=?");
-        $stmt->bind_param("i",$_GET['id_veiculo']);
+        $stmt = $conexao->prepare("DELETE FROM avaliacao WHERE id_avaliacao=?");
+        $stmt->bind_param("i",$_GET['id_avaliacao']);
         $stmt->execute();
       
         if($stmt->affected_rows > 0){

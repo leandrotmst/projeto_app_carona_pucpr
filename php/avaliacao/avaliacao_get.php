@@ -7,13 +7,13 @@
     ];
     
     // Recuperando informações do Banco de Dados
-    if(isset($_GET['id_veiculo'])){
+    if(isset($_GET['id_avaliacao'])){
         // Segunda situação - RECEBENDO O ID por GET
-        $stmt = $conexao->prepare("SELECT * FROM veiculo WHERE id_veiculo=?");
-        $stmt->bind_param("i",$_GET['id_veiculo']);
+        $stmt = $conexao->prepare("SELECT * FROM avaliacao WHERE id_avaliacao=?");
+        $stmt->bind_param("i",$_GET['id_avaliacao']);
     }else{
         // Primeira situação - SEM RECEBER O ID por GET
-        $stmt = $conexao->prepare("SELECT * FROM veiculo");
+        $stmt = $conexao->prepare("SELECT * FROM avaliacao");
     }
 
     // Recuperando informações do Banco de Dados
