@@ -31,8 +31,6 @@ function preencherTabela(tabela){
     var html = `
         <table>
             <tr>
-                <th> Nome Motorista </th>
-                <th> | </th>
                 <th> ID Carona </th>
                 <th> | </th>
                 <th> ID Motorista </th>
@@ -50,8 +48,6 @@ function preencherTabela(tabela){
     for(var i=0;i<tabela.length;i++){
         html += `
             <tr>
-                <td> ${tabela[i].motorista} </td>
-                <td> | </td>
                 <td> ${tabela[i].id_carona} </td>
                 <td> | </td>
                 <td> ${tabela[i].id_avaliado} </td>

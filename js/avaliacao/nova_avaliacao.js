@@ -3,7 +3,6 @@ document.getElementById('enviar').addEventListener('click', () => {
 });
 
 async function novo(){
-    var motorista = document.getElementById("motorista").value;
     var idCarona = document.getElementById("id_carona").value;
     var idAvaliado = document.getElementById("id_avaliado").value;
     var idAvaliador = document.getElementById("id_avaliador").value;
@@ -11,7 +10,6 @@ async function novo(){
     var comentario = document.getElementById("comentario").value;
 
     const fd = new FormData();
-    fd.append('motorista', motorista);
     fd.append('id_carona', idCarona);
     fd.append('id_avaliado', idAvaliado);
     fd.append('id_avaliador', idAvaliador);
