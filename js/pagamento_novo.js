@@ -3,13 +3,15 @@ document.getElementById('enviar').addEventListener('click', () => {
 });
 
 async function novo(){
-    var nome     = document.getElementById("nome").value;
-    var numero   = document.getElementById("numero").value;
-    var validade = document.getElementById("validade").value;
-    var cvv      = document.getElementById("cvv").value;
-    var tipo     = document.getElementById("tipo").value;
+    var id_usuario = document.getElementById("id_usuario").value;
+    var nome       = document.getElementById("nome").value;
+    var numero     = document.getElementById("numero").value;
+    var validade   = document.getElementById("validade").value;
+    var cvv        = document.getElementById("cvv").value;
+    var tipo       = document.getElementById("tipo").value;
 
     const fd = new FormData();
+    fd.append('id_usuario', id_usuario);
     fd.append('nome', nome);
     fd.append('numero', numero);
     fd.append('validade', validade);

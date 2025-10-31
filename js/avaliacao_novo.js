@@ -1,12 +1,11 @@
-document.getElementById('avaliacaoForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('enviar').addEventListener('click', () => {
     novo();
 });
 
 async function novo(){
-    var idCarona = document.getElementById("id_carona").value;
-    var idAvaliado = document.getElementById("id_avaliado").value;
-    var idAvaliador = document.getElementById("id_avaliador").value;
+    var id_carona = document.getElementById("id_carona").value;
+    var id_avaliado = document.getElementById("id_avaliado").value;
+    var id_avaliador = document.getElementById("id_avaliador").value;
     var notaEl = document.querySelector('input[name="nota"]:checked');
     var nota = notaEl ? notaEl.value : null;
     var comentario = document.getElementById("comentario").value;
@@ -17,9 +16,9 @@ async function novo(){
     }
 
     const fd = new FormData();
-    fd.append('id_carona', idCarona);
-    fd.append('id_avaliado', idAvaliado);
-    fd.append('id_avaliador', idAvaliador);
+    fd.append('id_carona', id_carona);
+    fd.append('id_avaliado', id_avaliado);
+    fd.append('id_avaliador', id_avaliador);
     fd.append('nota', nota);
     fd.append('comentario', comentario);
 

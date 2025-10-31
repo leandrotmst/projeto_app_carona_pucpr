@@ -25,8 +25,7 @@ async function buscar(id){
     }
 }
 
-document.getElementById('avaliacaoForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('enviar').addEventListener('click', () => {
     alterar();
 });
 

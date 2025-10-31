@@ -12,32 +12,33 @@ async function buscar(id){
 
     if(resposta.status=='ok'){
         var registro = resposta.data[0];
-
+        document.getElementById("id_usuario").value   = registro.id_usuario;
         document.getElementById('nome').value         = registro.nome;
         document.getElementById('numero').value       = registro.numero;
         document.getElementById('validade').value     = registro.validade;
         document.getElementById('cvv').value          = registro.cvv;
-        document.getElementById('tipo').value         = registro.tipo.toLowerCase();
+        document.getElementById('tipo').value         = registro.tipo;
         document.getElementById("id_pagamento").value = registro.id_pagamento;
     }else{
         alert("Erro, não existe: " + resposta.mensagem);
     }
 }
 
-document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('salvar').addEventListener('click', () => {
     alterar();
 });
 
 async function alterar(){
-    var nome     = document.getElementById("nome").value;
-    var numero   = document.getElementById("numero").value;
-    var validade = document.getElementById("validade").value;
-    var cvv      = document.getElementById("cvv").value;
-    var tipo     = document.getElementById("tipo").value;
-    var id       = document.getElementById("id_pagamento").value;
+    var id_usuario = document.getElementById("id_usuario").value;
+    var nome       = document.getElementById("nome").value;
+    var numero     = document.getElementById("numero").value;
+    var validade   = document.getElementById("validade").value;
+    var cvv        = document.getElementById("cvv").value;
+    var tipo       = document.getElementById("tipo").value;
+    var id         = document.getElementById("id_pagamento").value;
 
     const fd = new FormData();
+    fd.append('id_usuario', id_usuario);
     fd.append('nome', nome);
     fd.append('numero', numero);
     fd.append('validade', validade);
