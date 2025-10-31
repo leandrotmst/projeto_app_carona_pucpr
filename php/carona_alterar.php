@@ -8,17 +8,17 @@
 
     if(isset($_GET['id_carona'])){
         // Simulando as informações que vem do front
-        $id_usuario = (int)$_POST['id_usuario'];
-        $origem     = $_POST['origem'];
-        $destino    = $_POST['destino'];
-        $origem     = $_POST['origem'];
-        $vagas      = (int)$_POST['vagas'];
+        $id_usuario  = (int)$_POST['id_usuario'];
+        $origem      = $_POST['origem'];
+        $destino     = $_POST['destino'];
+        $origem      = $_POST['origem'];
+        $passageiros = (int)$_POST['passageiros'];
     
         // Preparando para inserção no banco de dados
         $stmt = $conexao->prepare("UPDATE carona SET id_usuario=?, origem=?, 
-        destino=?, origem=?, vagas=? WHERE id_carona=?");
+        destino=?, origem=?, passageiros=? WHERE id_carona=?");
         $stmt->bind_param("isssii",$id_usuario, $origem, $destino, $origem, 
-        $vagas, $_GET['id_carona']);
+        $passageiros, $_GET['id_carona']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

@@ -16,7 +16,7 @@ async function buscar(id){
         document.getElementById('id_usuario').value = registro.id_usuario;
         document.getElementById('origem').value     = registro.origem;
         document.getElementById('destino').value    = registro.destino;
-        document.getElementById('vagas').value      = registro.vagas;
+        document.getElementById('passageiros').value      = registro.passageiros;
     }else{
         alert("Erro, não existe: " + resposta.mensagem);
     }
@@ -30,13 +30,13 @@ async function alterar(){
     var id_usuario = document.getElementById("id_usuario").value;
     var destino    = document.getElementById("destino").value;
     var origem     = document.getElementById("origem").value;
-    var vagas      = document.getElementById("vagas").value;
+    var passageiros      = document.getElementById("passageiros").value;
 
     const fd = new FormData();
     fd.append('id_usuario', id_usuario);
     fd.append('destino', destino);
     fd.append('origem', origem);
-    fd.append('vagas', vagas);
+    fd.append('passageiros', passageiros);
 
     const retorno = await 
     fetch("../php/carona_alterar.php?id_carona="+id,

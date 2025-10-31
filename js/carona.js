@@ -37,7 +37,7 @@ function preencherTabela(tabela){
                 <th> | </th>
                 <th> Destino </th>
                 <th> | </th>
-                <th> Vagas </th>
+                <th> Passageiros </th>
             </tr>
     `;
     
@@ -50,7 +50,7 @@ function preencherTabela(tabela){
                 <td> | </td>
                 <td> ${tabela[i].destino} </td>
                 <td> | </td>
-                <td> ${tabela[i].vagas} </td>
+                <td> ${tabela[i].passageiros} </td>
                 <td>
                     <a href='carona_alterar.html?id_carona=${tabela[i].id_carona}'>Alterar</a>
                     <a href='#' onClick='excluir(${tabela[i].id_carona})'>Excluir</a>

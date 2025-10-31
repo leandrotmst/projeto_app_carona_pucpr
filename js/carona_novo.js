@@ -6,13 +6,13 @@ async function novo(){
     var id_usuario = document.getElementById("id_usuario").value;
     var origem     = document.getElementById("origem").value;
     var destino    = document.getElementById("destino").value;
-    var vagas      = document.getElementById("vagas").value;
+    var passageiros      = document.getElementById("passageiros").value;
 
     const fd = new FormData();
     fd.append('id_usuario', id_usuario);
     fd.append('origem', origem);
     fd.append('destino', destino);
-    fd.append('vagas', vagas);
+    fd.append('passageiros', passageiros);
 
     const retorno = await fetch("../php/carona_novo.php",
     {
