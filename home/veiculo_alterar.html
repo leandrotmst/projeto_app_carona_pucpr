@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro/Edição de Usuário</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="form-titulo">Novo Veículo</h1>
+        
+        <form id="cadastroForm">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome do dono" required>
+                <input type="hidden" id="id_veiculo" name="id_veiculo">
+            </div>
+            <div>
+                <label for="Modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo" required>
+            </div>
+            <div>
+                <label for="placa">Placa</label>
+                <input type="placa" id="placa" name="placa" required>
+            </div>
+            
+            <div>
+                <label for="cor">Cor</label>
+                <input type="text" id="cor" name="cor" required>
+            </div>
+
+            <div>
+                <button type="submit" id="enviar">Salvar</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/veiculo_alterar.js"></script>
+</body>
+
+</html>

@@ -12,13 +12,13 @@ async function login(){
         fd.append("senha", senha);
 
         // Login Admin
-        window.location.href = "home/admin/index.html";
+        window.location.href = "home/admin.html";
     }else{
         const fd = new FormData();
         fd.append("user", user);
         fd.append("senha", senha);
         
         // Login User
-        window.location.href = "home/app/index.html";
+        window.location.href = "home/app.html";
     }
 }

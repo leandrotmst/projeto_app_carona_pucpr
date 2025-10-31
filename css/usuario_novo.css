@@ -1,0 +1,23 @@
+:root {
+    --uni-blue: #1e3a8a; /* Azul escuro universitário */
+    --uni-accent: #f59e0b; /* Laranja de contraste */
+}
+
+body {
+    margin-top: -45px;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa; /* Fundo cinza claro */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-uni-blue { color: var(--uni-blue) !important; }
+.btn-uni-accent { background-color: var(--uni-accent); border-color: var(--uni-accent); color: #fff; }
+.btn-uni-accent:hover { background-color: #d99009; border-color: #d99009; }
+/* Foco personalizado para inputs */
+.form-control:focus, .form-select:focus {
+    border-color: var(--uni-blue);
+    box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25);
+}
