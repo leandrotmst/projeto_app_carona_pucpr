@@ -8,13 +8,13 @@
         'data'     => []
     ];
 
-    if(isset($_GET['id_pagamento'])){
+    if(isset($_GET['id_carona'])){
         // Segunda situação - RECEBENDO O ID por GET
-        $stmt = $conexao->prepare("SELECT * FROM pagamento WHERE id_pagamento=?");
-        $stmt->bind_param("i",$_GET['id_pagamento']);
+        $stmt = $conexao->prepare("SELECT * FROM carona WHERE id_carona=?");
+        $stmt->bind_param("i",$_GET['id_carona']);
     }else{
         // Primeira situação - SEM RECEBER O ID por GET
-        $stmt = $conexao->prepare("SELECT * FROM pagamento");
+        $stmt = $conexao->prepare("SELECT * FROM carona");
     }    
     
     // Recuperando informações do Banco de Dados

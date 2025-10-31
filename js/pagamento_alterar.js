@@ -12,6 +12,7 @@ async function buscar(id){
 
     if(resposta.status=='ok'){
         var registro = resposta.data[0];
+        
         document.getElementById("id_usuario").value   = registro.id_usuario;
         document.getElementById('nome').value         = registro.nome;
         document.getElementById('numero').value       = registro.numero;

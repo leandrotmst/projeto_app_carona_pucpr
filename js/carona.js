@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('novo').addEventListener('click', () => {
-    window.location.href = "pagamento_novo.html";
+    window.location.href = "carona_novo.html";
 });
 
-async function buscar() {
-    const retorno = await fetch ("../php/pagamento_get.php");
+async function buscar(){
+    const retorno = await fetch ("../php/carona_get.php");
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -16,7 +16,7 @@ async function buscar() {
 }
 
 async function excluir(id){
-    const retorno = await fetch('../php/pagamento_excluir.php?id_pagamento='+id);
+    const retorno = await fetch('../php/carona_excluir.php?id_carona='+id);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -31,33 +31,29 @@ function preencherTabela(tabela){
     var html = `
         <table>
             <tr>
-                <th> Nome Cartão </th>
+                <th> ID Usuário </th>
                 <th> | </th>
-                <th> Número Cartão </th>
+                <th> Origem </th>
                 <th> | </th>
-                <th> Validade </th>
+                <th> Destino </th>
                 <th> | </th>
-                <th> Cvv </th>
-                <th> | </th>
-                <th> Tipo </th>
+                <th> Vagas </th>
             </tr>
     `;
     
     for(var i=0;i<tabela.length;i++){
         html += `
             <tr>
-                <td> ${tabela[i].nome} </td>
+                <td> ${tabela[i].id_usuario} </td>
                 <td> | </td>
-                <td> ${tabela[i].numero} </td>
+                <td> ${tabela[i].origem} </td>
                 <td> | </td>
-                <td> ${tabela[i].validade} </td>
+                <td> ${tabela[i].destino} </td>
                 <td> | </td>
-                <td> ${tabela[i].cvv} </td>
-                <td> | </td>
-                <td> ${tabela[i].tipo} </td>
+                <td> ${tabela[i].vagas} </td>
                 <td>
-                    <a href='pagamento_alterar.html?id_pagamento=${tabela[i].id_pagamento}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id_pagamento})'>Excluir</a>
+                    <a href='carona_alterar.html?id_carona=${tabela[i].id_carona}'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_carona})'>Excluir</a>
                 </td>
             </tr>
         `;

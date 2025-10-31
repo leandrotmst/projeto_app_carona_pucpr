@@ -8,16 +8,15 @@
 
     // Simulando as informações que vem do front
     $id_usuario = (int)$_POST['id_usuario'];
-    $nome       = $_POST['nome'];
-    $numero     = $_POST['numero'];
-    $validade   = $_POST['validade'];
-    $cvv        = $_POST['cvv'];
-    $tipo       = $_POST['tipo'];
+    $origem     = $_POST['origem'];
+    $destino    = $_POST['destino'];
+    $origem     = $_POST['origem'];
+    $vagas      = (int)$_POST['vagas'];
 
     // Preparando para inserção no banco de dados
-    $stmt = $conexao->prepare("INSERT INTO pagamento(id_usuario, nome, numero, 
-    validade, cvv, tipo) VALUES(?,?,?,?,?,?)");
-    $stmt->bind_param("isssss", $id_usuario, $nome, $numero, $validade, $cvv, $tipo);
+    $stmt = $conexao->prepare("INSERT INTO carona(id_usuario, origem, destino, 
+    origem, vagas) VALUES(?,?,?,?,?)");
+    $stmt->bind_param("isssi",$id_usuario, $origem, $destino, $origem, $vagas);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

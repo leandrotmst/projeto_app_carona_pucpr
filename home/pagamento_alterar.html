@@ -8,16 +8,21 @@
 <body>
     <h1>Salvar cartão</h1>
     <label>ID usuário:</label><br>
-    <input type="text" id="id_usuario" required><br>
+    <input type="number" id="id_usuario" required><br>
     <label>Nome no cartão:</label><br>
+    
     <input type="text" id="nome" required><br>
     <input type="hidden" id="id_pagamento" name="id_pagamento">
+    
     <label>Número do cartão:</label><br>
     <input type="text" id="numero" maxlength="19" required><br>
+    
     <label>Validade (MM/AA):</label><br>
     <input type="text" id="validade" maxlength="5" required><br>
+    
     <label>CVV:</label><br>
     <input type="text" id="cvv" maxlength="4" required><br>
+    
     <label>Tipo:</label><br>
     <select id="tipo">
         <option value="Credito">Crédito</option>

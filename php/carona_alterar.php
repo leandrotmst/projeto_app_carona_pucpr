@@ -6,20 +6,19 @@
         'data'     => [],
     ];
 
-    if(isset($_GET['id_pagamento'])){
+    if(isset($_GET['id_carona'])){
         // Simulando as informações que vem do front
         $id_usuario = (int)$_POST['id_usuario'];
-        $nome       = $_POST['nome'];
-        $numero     = $_POST['numero'];
-        $validade   = $_POST['validade'];
-        $cvv        = $_POST['cvv'];
-        $tipo       = $_POST['tipo'];
+        $origem     = $_POST['origem'];
+        $destino    = $_POST['destino'];
+        $origem     = $_POST['origem'];
+        $vagas      = (int)$_POST['vagas'];
     
         // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE pagamento SET id_usuario=?, nome=?, 
-        numero=?, validade=?, cvv=?, tipo=? WHERE id_pagamento=?");
-        $stmt->bind_param("isssssi", $id_usuario, $nome, $numero, $validade, 
-        $cvv, $tipo, $_GET['id_pagamento']);
+        $stmt = $conexao->prepare("UPDATE carona SET id_usuario=?, origem=?, 
+        destino=?, origem=?, vagas=? WHERE id_carona=?");
+        $stmt->bind_param("isssii",$id_usuario, $origem, $destino, $origem, 
+        $vagas, $_GET['id_carona']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){
