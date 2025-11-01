@@ -31,14 +31,14 @@ document.getElementById('salvar').addEventListener('click', () => {
 });
 
 async function alterar(){
-    var nome      = document.getElementById("nome").value;
-    var telefone  = document.getElementById("telefone").value;
-    var email     = document.getElementById("email").value;
-    var senha     = document.getElementById("senha").value;
-    var confsenha = document.getElementById("confsenha").value;
-    var nasc      = document.getElementById("nasc").value;
-    var tipo      = document.getElementById("tipo").value;
-    var id        = document.getElementById("id_usuario").value;
+    var nome       = document.getElementById("nome").value;
+    var telefone   = document.getElementById("telefone").value;
+    var email      = document.getElementById("email").value;
+    var senha      = document.getElementById("senha").value;
+    var confsenha  = document.getElementById("confsenha").value;
+    var nasc       = document.getElementById("nasc").value;
+    var tipo       = document.getElementById("tipo").value;
+    var id_usuario = document.getElementById("id_usuario").value;
 
     if(senha===confsenha){
         const fd = new FormData();
@@ -50,7 +50,7 @@ async function alterar(){
         fd.append('tipo', tipo);
 
         const retorno = await 
-        fetch("../php/usuario_alterar.php?id_usuario="+id,
+        fetch("../php/usuario_alterar.php?id_usuario="+id_usuario,
         {
             method: "POST",
             body: fd

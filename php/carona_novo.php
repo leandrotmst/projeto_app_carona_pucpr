@@ -10,13 +10,12 @@
     $id_usuario  = (int)$_POST['id_usuario'];
     $origem      = $_POST['origem'];
     $destino     = $_POST['destino'];
-    $origem      = $_POST['origem'];
-    $passageiros = (int)$_POST['pass$passageiros'];
+    $passageiros = (int)$_POST['passageiros'];
 
     // Preparando para inserção no banco de dados
     $stmt = $conexao->prepare("INSERT INTO carona(id_usuario, origem, destino, 
-    origem, pass$passageiros) VALUES(?,?,?,?,?)");
-    $stmt->bind_param("isssi",$id_usuario, $origem, $destino, $origem, $passageiros);
+    passageiros) VALUES(?,?,?,?)");
+    $stmt->bind_param("issi",$id_usuario, $origem, $destino, $passageiros);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

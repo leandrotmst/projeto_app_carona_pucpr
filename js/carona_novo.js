@@ -3,10 +3,10 @@ document.getElementById('enviar').addEventListener('click', () => {
 });
 
 async function novo(){
-    var id_usuario = document.getElementById("id_usuario").value;
-    var origem     = document.getElementById("origem").value;
-    var destino    = document.getElementById("destino").value;
-    var passageiros      = document.getElementById("passageiros").value;
+    var id_usuario  = document.getElementById("id_usuario").value;
+    var origem      = document.getElementById("origem").value;
+    var destino     = document.getElementById("destino").value;
+    var passageiros = document.getElementById("passageiros").value;
 
     const fd = new FormData();
     fd.append('id_usuario', id_usuario);

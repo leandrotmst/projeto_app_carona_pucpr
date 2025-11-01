@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registre sua carona</title>
+    <title>Altere seu registro de carona</title>
 </head>
 
 <body>
     <div>
-        <h1 id="form-titulo">Avaliar Motorista</h1>
+        <h1>Alterar Carona</h1>
         
         <div>
             <label for="id_usuario">ID da usuário</label>
             <input type="number" id="id_usuario" name="id_usuario" required>
+            <input type="hidden" id="id_carona" name="id_carona">
         </div>
         <div>
             <label for="origem">Origem da viagem</label>
@@ -25,8 +26,8 @@
         </div>
 
         <div>
-            <label for="vagas">Vagas</label>
-            <select id="vagas" name="vagas" class="form-select" required>
+            <label for="passageiros">Passageiros</label>
+            <select id="passageiros" name="passageiros" class="form-select" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
