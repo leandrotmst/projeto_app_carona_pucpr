@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const url = new URLSearchParams(window.location.search);
-    const id = url.get('id');
+    const id = url.get('id_veiculo');
 
     buscar(id);
 });
@@ -17,8 +17,6 @@ async function buscar(id){
         document.getElementById('placa').value  = registro.placa;
         document.getElementById('cor').value    = registro.cor
         document.getElementById('id_veiculo').value = registro.id_veiculo
-
-        window.location.href = "veiculo.html";
     }
 }
 

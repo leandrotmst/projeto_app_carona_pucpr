@@ -31,24 +31,34 @@ function preencherTabela(tabela){
     var html = `
         <table>
             <tr>
-                <th> Nome </th>
+                <th> ID usuário </th>
+                <th> | </th>
                 <th> Modelo </th>
+                <th> | </th>
                 <th> Placa </th>
+                <th> | </th>
                 <th> Cor </th>
+                <th> | </th>
+                <th> Ações </th>
             </tr>
     `;
     
     for(var i=0;i<tabela.length;i++){
         html += `
             <tr>
-                <td> ${tabela[i].nome} </td>
+                <td> ${tabela[i].id_usuario} </td>
+                <td> | </td>
                 <td> ${tabela[i].modelo} </td>
+                <td> | </td>
                 <td> ${tabela[i].placa} </td>
+                <td> | </td>
                 <td> ${tabela[i].cor} </td>
+                <td> | </td>
                 <td>
-                    <a href='veiculo_alterar.html?id_veiculo=${tabela[i].id}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id})'>Excluir</a>
+                    <a href='veiculo_alterar.html?id_veiculo=${tabela[i].id_veiculo}'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_veiculo})'>Excluir</a>
                 </td>
+                <td> | </td>
             </tr>
         `;
 

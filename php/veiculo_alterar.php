@@ -8,15 +8,15 @@
 
     if(isset($_GET['id_veiculo'])){
         // Simulando as informações que vem do front
-        $nome   = $_POST['nome'];
+        $id_usuario = (int)$_POST['id_usuario'];
         $modelo = $_POST['modelo'];
+        $placa    = $_POST['placa'];
         $cor    = $_POST['cor'];
-        $ano    = $_POST['ano'];
     
         // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE veiculo SET nome=?, modelo=?, cor=?, 
-        ano=? WHERE id_veiculo=?");
-        $stmt->bind_param("ssssi",$nome, $modelo, $cor, $ano, 
+        $stmt = $conexao->prepare("UPDATE veiculo SET id_usuario=?, modelo=?, placa=?, 
+        cor=? WHERE id_veiculo=?");
+        $stmt->bind_param("isssi",$id_usuario, $modelo, $placa, $cor, 
         $_GET['id_veiculo']);
         $stmt->execute();
 
