@@ -6,17 +6,16 @@ O **Carona Uni** é um projeto acadêmico desenvolvido para facilitar a conexão
 
 ## **🚀 Status Atual do Protótipo**
 
-Esta versão é um protótipo funcional (Frontend/CRUD Básico) que utiliza **JavaScript e LocalStorage** para simular o banco de dados.
+Esta versão é um protótipo funcional (Frontend/CRUD Básico) que utiliza **JavaScript e SQL**.
 
 ### **Funcionalidades Implementadas (Protótipo)**
 
 * **Página Inicial (index.html):** Apresentação e direcionamento rápido para Cadastro ou Login.  
-* **Cadastro Dinâmico (cadastro.html):** Formulário único que se adapta:  
-  * Se o usuário selecionar **"Motorista"**, campos adicionais (Placa, Modelo, Ano) são exibidos e salvos.  
-  * Se for **"Passageiro"**, apenas os dados básicos são coletados.  
+* **Cadastro Dinâmico (usuario_novo.html):** Formulário único que pede, nome, e-mail, telefone, senha, senha confirmada, tipo (Passageiro ou Motorista). 
 * **Feed de Caronas (feed.html):** Visualização de posts simulados de caronas disponíveis (ofertas e buscas).  
+* **Cadastro de pagamento, veículo, avaliação de viagem, carona... (....html):** Formulário único que pede informações importantes para cada uma das funcionalidades.  
 * **Filtro Simples:** Possibilidade de filtrar o feed entre "Motoristas" e "Passageiros".  
-* **CRUD (Criação):** Os dados de novos usuários são salvos no **localStorage** do navegador (listaUsuarios).
+* **CRUD (Criação):** Os dados de novos usuários são salvos no **SQL**.
 
 ## **🛠️ Tecnologias Utilizadas**
 
@@ -24,9 +23,9 @@ Esta versão é um protótipo funcional (Frontend/CRUD Básico) que utiliza **Ja
 | :---- | :---- | :---- |
 | **Frontend** | HTML5 | Estrutura das páginas. |
 | **Estilização** | Tailwind CSS (CDN) | Design moderno, responsivo e limpo (padrão universitário). |
-| **Lógica** | JavaScript (Puro) | Manipulação do DOM, controle de visibilidade de formulário, lógica de CRUD e gerenciamento de estado (via localStorage). |
-| **Backend Futuro** | PHP | Será utilizado para a API e comunicação com o banco de dados. |
-| **Banco de Dados Futuro** | MySQL | Armazenamento persistente de usuários, posts de carona e histórico. |
+| **Lógica** | JavaScript (Puro) | Manipulação do DOM, controle de visibilidade de formulário, lógica de CRUD e gerenciamento de estado (via SQL). |
+| **Backend** | PHP | Será utilizado para a API e comunicação com o banco de dados. |
+| **Banco de Dados** | MySQL | Armazenamento persistente de usuários, posts de carona e histórico. |
 
 ## **⚙️ Instalação e Execução**
 
@@ -34,7 +33,7 @@ Para rodar o protótipo localmente, você só precisa de um navegador moderno:
 
 1. **Clone o Repositório:**  
    git clone \[LINK DO SEU REPOSITÓRIO\]  
-   cd carona-uni
+   cd projeto_app_carona_pucpr
 
 2. **Abra as Páginas:**  
    * Abra o arquivo index.html diretamente no seu navegador.  
