@@ -17,6 +17,7 @@ async function buscar(id){
         document.getElementById('id_avaliado').value  = registro.id_avaliado;
         document.getElementById('id_avaliador').value = registro.id_avaliador;
         document.getElementById('comentario').value   = registro.comentario;
+        document.getElementById('id_avaliacao').value = registro.id_avaliacao;
         var nota = String(registro.nota);
         var el = document.querySelector('input[name="nota"][value="'+nota+'"]');
         if(el) el.checked = true;
@@ -25,7 +26,7 @@ async function buscar(id){
     }
 }
 
-document.getElementById('enviar').addEventListener('click', () => {
+document.getElementById('salvar').addEventListener('click', () => {
     alterar();
 });
 
@@ -37,31 +38,27 @@ async function alterar(){
     var radio = document.querySelector('input[name="nota"][value="'+nota+'"]');
     if(radio) radio.checked = true;
     var comentario   = document.getElementById("comentario").value;
+    var id_avaliacao   = document.getElementById("id_avaliacao").value;
 
-    if(senha===confsenha){
-        const fd = new FormData();
-        fd.append('id_carona', id_carona);
-        fd.append('id_avaliado', id_avaliado);
-        fd.append('id_avaliador', id_avaliador);
-        fd.append('senha', senha);
-        fd.append('comentario', comentario);
+    const fd = new FormData();
+    fd.append('id_carona', id_carona);
+    fd.append('id_avaliado', id_avaliado);
+    fd.append('id_avaliador', id_avaliador);
+    fd.append('senha', senha);
+    fd.append('comentario', comentario);
 
-        const retorno = await 
-        fetch("../php/avaliacao_alterar.php?id_avaliacao="+id,
-        {
-            method: "POST",
-            body: fd
-        });
-        const resposta = await retorno.json();
+    const retorno = await 
+    fetch("../php/avaliacao_alterar.php?id_avaliacao="+id_avaliacao,
+    {
+        method: "POST",
+        body: fd
+    });
+    const resposta = await retorno.json();
 
-        if(resposta.status=='ok'){
-            alert("Sucesso: " + resposta.mensagem);
-            window.location.href = 'avaliacao.html';
-        }else{
-            alert("Erro: " + resposta.mensagem);
-        }
-    }
-    else{
-        alert('As senhas devem ser as mesmas');
+    if(resposta.status=='ok'){
+        alert("Sucesso: " + resposta.mensagem);
+        window.location.href = 'avaliacao.html';
+    }else{
+        alert("Erro: " + resposta.mensagem);
     }
 }

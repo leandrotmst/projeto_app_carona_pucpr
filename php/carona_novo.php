@@ -7,15 +7,21 @@
     ];
 
     // Simulando as informações que vem do front
-    $id_usuario  = (int)$_POST['id_usuario'];
-    $origem      = $_POST['origem'];
-    $destino     = $_POST['destino'];
-    $passageiros = (int)$_POST['passageiros'];
+    $id_usuario = (int)$_POST['id_usuario'];
+    $origem     = $_POST['origem'];
+    $destino    = $_POST['destino'];
+    $data_hora_partida = $_POST['data_hora_partida'];
+    $id_veiculo = (int)$_POST['id_veiculo'];
+    $vagas      = (int)$_POST['vagas'];
+    $distancia =  (float)$_POST['distancia'];
+    $tempo_estimado =  $_POST['tempo_estimado'];
 
     // Preparando para inserção no banco de dados
     $stmt = $conexao->prepare("INSERT INTO carona(id_usuario, origem, destino, 
-    passageiros) VALUES(?,?,?,?)");
-    $stmt->bind_param("issi",$id_usuario, $origem, $destino, $passageiros);
+    data_hora_partida, id_veiculo, vagas, distancia, tempo_estimado) 
+    VALUES(?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("isssiids",$id_usuario, $origem, $destino, $data_hora_partida, 
+    $id_veiculo, $vagas, $distancia, $tempo_estimado);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

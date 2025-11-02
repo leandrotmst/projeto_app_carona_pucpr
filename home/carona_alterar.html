@@ -16,7 +16,7 @@
             <input type="number" id="id_usuario" name="id_usuario" required>
             <input type="hidden" id="id_carona" name="id_carona">
         </div>
-        <div>
+           <div>
             <label for="origem">Origem da viagem</label>
             <input type="text" id="origem" name="origem" required>
         </div>
@@ -24,16 +24,34 @@
             <label for="destino">Destino da viagem</label>
             <input type="text" id="destino" name="destino" required>
         </div>
-
         <div>
-            <label for="passageiros">Passageiros</label>
-            <select id="passageiros" name="passageiros" class="form-select" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+            <label for="data_hora_partida">Data e hora da partida</label>
+            <input type="datetime" id="data_hora_partida" name="data_hora_partida" required>
+        </div>
+        <div>
+            <label for="id_veiculo">ID do veículo</label>
+            <input type="number" id="id_veiculo" name="id_veiculo" required>
+        </div>
+        
+        <div>
+            <label for="vagas">Número de vagas</label>
+            <select id="vagas" name="vagas" class="form-select" 
+            required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
             </select>
         </div>
+        <div>
+            <label for="distancia">Distancia</label>
+            <input type="number" id="distancia" name="distancia" required>
+        </div>
+        <div>
+            <label for="tempo_estimado">Tempo estimado</label>
+            <input type="time" id="tempo_estimado" name="tempo_estimado" required>
+        </div>
+    
 
         <div>
             <button type="submit" id="salvar">Salvar</button>

@@ -3,13 +3,13 @@ document.getElementById('enviar').addEventListener('click', () => {
 });
 
 async function novo(){
-    var nome = document.getElementById("nome").value;
+    var id_usuario = document.getElementById("id_usuario").value;
     var modelo = document.getElementById("modelo").value;
     var cor = document.getElementById("cor").value;
     var ano = document.getElementById("ano").value;
 
     const fd = new FormData();
-    fd.append('nome', nome);
+    fd.append('id_usuario', id_usuario);
     fd.append('modelo', modelo);
     fd.append('cor', cor);
     fd.append('ano', ano);

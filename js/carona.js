@@ -31,13 +31,21 @@ function preencherTabela(tabela){
     var html = `
         <table>
             <tr>
-                <th> ID Usuário </th>
+                <th> ID Usuário (Motorista) </th>
                 <th> | </th>
                 <th> Origem </th>
                 <th> | </th>
                 <th> Destino </th>
                 <th> | </th>
-                <th> Passageiros </th>
+                <th> Data e hora de partida </th>
+                <th> | </th>
+                <th> ID Veículo </th>
+                <th> | </th>
+                <th> Vagas </th>
+                <th> | </th>
+                <th> Distância </th>
+                <th> | </th>
+                <th> Tempo Estimado </th>
             </tr>
     `;
     
@@ -50,7 +58,15 @@ function preencherTabela(tabela){
                 <td> | </td>
                 <td> ${tabela[i].destino} </td>
                 <td> | </td>
-                <td> ${tabela[i].passageiros} </td>
+                <td> ${tabela[i].data_hora_partida} </td>
+                <td> | </td>
+                <td> ${tabela[i].veiculo} </td>
+                <td> | </td>
+                <td> ${tabela[i].vagas} </td>
+                <td> | </td>
+                <td> ${tabela[i].distancia} </td>
+                <td> | </td>
+                <td> ${tabela[i].tempo_estimado} </td>
                 <td>
                     <a href='carona_alterar.html?id_carona=${tabela[i].id_carona}'>Alterar</a>
                     <a href='#' onClick='excluir(${tabela[i].id_carona})'>Excluir</a>
