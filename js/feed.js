@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+    valida_sessao();
+    dados_simulados();
+});
+
+document.getElementById('logout').addEventListener('click', ()=>{
+    logout();
+});
+
+async function logout(){
+    const retorno = await fetch("../php/usuario_logout.php");
+    const resposta = await retorno.json();
+    if(resposta.status=='ok'){
+        window.location.href="../home/login.html";
+    }
+}
+
+async function dados_simulados() {
     // --- DADOS SIMULADOS (Mock Data) ---
     const mockPosts = [
         {
@@ -93,12 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
             feedContainer.insertAdjacentHTML('beforeend', postHtml);
         });
     }
-
     // --- FUNÇÃO DE FILTRAGEM ---
     function filterFeed() {
         const filtro = filtroTipo.value;
         let postsFiltrados;
-
+    
         if (filtro === 'todos') {
             postsFiltrados = mockPosts;
         } else {
@@ -107,17 +123,17 @@ document.addEventListener("DOMContentLoaded", () => {
         
         renderFeed(postsFiltrados);
     }
-
+    
     // --- INICIALIZAÇÃO E EVENTOS ---
-
+    
     // 1. Carrega o feed completo ao iniciar a página
     filterFeed(); 
-
+    
     // 2. Adiciona o listener para o filtro
     filtroTipo.addEventListener("change", filterFeed);
-
+    
     // 3. Função de demonstração para o botão "Ver Detalhes / Chat"
     window.verDetalhes = function(postId) {
         alert(`Abrindo chat/detalhes para o Post ID: ${postId}.`);
     }
-});
+}
