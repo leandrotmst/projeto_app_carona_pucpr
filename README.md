@@ -70,14 +70,6 @@ Para rodar o protótipo localmente, você só precisa de um navegador moderno:
 
 ## **📝 Próximos Passos (Roadmap)**
 
-Os próximos marcos do desenvolvimento incluem:
-
-1. **Implementação do Backend:** Conectar o frontend (via Fetch API/PHP) ao MySQL para persistência de dados.
-2. **Sistema de Login/Sessão:** Criar o sistema de autenticação real (PHP Sessions).
-3. **Módulo de Caronas:** Criar formulário para publicar novas ofertas/solicitações de carona.
-4. **Sistema de Chat:** Implementar a funcionalidade de chat em tempo real dentro de cada post.
-5. **Integração de Pagamento:** Simular ou integrar uma solução de pagamento web para o modelo de comissão.
-
 1. Como Criar o Banco de Dados
 O processo de instalação envolve a criação do banco de dados e a importação do seu script SQL.
 
