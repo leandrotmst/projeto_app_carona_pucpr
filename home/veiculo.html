@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Veículos | Admin</title>
+    <link rel="stylesheet" href="../css/veiculo.css">
 </head>
 <body>
-    <div>
-        <h1>Gerenciamento de Veículos</h1>
-        <button id="novo" type="button">+ Novo Veículo</button>
-    </div>
-    <div>
-        <div id="lista"></div>
+    <div class="container-principal">
+        <div class="header-gerenciamento">
+            <h1 class="titulo-gerenciamento">Gerenciamento de Veículos</h1> 
+            <button id="novo" type="button" class="btn-novo-usuario">+ Novo Veículo</button>
+        </div>
+        
+        <div class="tabela-container">
+            <div id="lista"></div>
+        </div>
     </div>
     
     <script src="../js/veiculo.js"></script>

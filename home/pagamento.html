@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento</title>
+    <title>Gerenciador de Pagamentos | Admin</title>
+    <link rel="stylesheet" href="../css/pagamento.css">
 </head>
 <body>
-    <div>
-        <h1>Método de pagamento</h1>
-        <h2>Escolha o método que deseja usar</h2>
-        <button id="novo" type="submit">+ Novo Cartão</button>
-    </div>
-    <div>
-        <div id="lista"></div>
+    <div class="container-principal">
+        <div class="header-gerenciamento">
+            <h1 class="titulo-gerenciamento">Método de pagamento</h1> 
+            <button id="novo" type="button" class="btn-novo-usuario">+ Novo Cartão</button>
+        </div>
+
+        <div class="tabela-container">
+            <div id="lista"></div>
+        </div>
     </div>
     <script src="../js/pagamento.js"></script>
 </body>

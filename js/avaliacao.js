@@ -15,8 +15,8 @@ async function buscar(){
     }
 }
 
-async function excluir(id){
-    const retorno = await fetch('../php/avaliacao_excluir.php?id_avaliacao='+id);
+async function excluir(id_avaliacao){
+    const retorno = await fetch('../php/avaliacao_excluir.php?id_avaliacao='+id_avaliacao);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -29,43 +29,39 @@ async function excluir(id){
 
 function preencherTabela(tabela){
     var html = `
-        <table>
-            <tr>
-                <th> ID Carona </th>
-                <th> | </th>
-                <th> ID Motorista </th>
-                <th> | </th>
-                <th> ID Passageiro </th>
-                <th> | </th>
-                <th> Nota </th>
-                <th> | </th>
-                <th> Comentário </th>
-                <th> | </th>
-                <th> Ações </th>
-            </tr>
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>ID Carona</th>
+                    <th>ID Motorista</th>
+                    <th>ID Passageiro</th>
+                    <th>Nota</th>
+                    <th>Comentário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
     
-    for(var i=0;i<tabela.length;i++){
+    for(var i=0; i < tabela.length; i++){
         html += `
             <tr>
                 <td> ${tabela[i].id_carona} </td>
-                <td> | </td>
                 <td> ${tabela[i].id_avaliado} </td>
-                <td> | </td>
                 <td> ${tabela[i].id_avaliador} </td>
-                <td> | </td>
                 <td> ${tabela[i].nota} </td>
-                <td> | </td>
                 <td> ${tabela[i].comentario} </td>
-                <td> | </td>
                 <td>
-                    <a href='avaliacao_alterar.html?id_avaliacao=${tabela[i].id_avaliacao}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id_avaliacao})'>Excluir</a>
+                    <a href='avaliacao_alterar.html?id_avaliacao=${tabela[i].id_avaliacao}' class='btn-alterar'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_avaliacao})' class='btn-excluir'>Excluir</a>
                 </td>
             </tr>
         `;
-
     }
-    html += '</table>';
+
+    html += `
+            </tbody>
+        </table>
+    `;
     document.getElementById('lista').innerHTML = html;
 }

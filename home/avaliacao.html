@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avalição de Motoristas | Admin</title>
+    <link rel="stylesheet" href="../css/avaliacao.css">
 </head>
 <body>
-    <div>
-        <h1>Avalição de Motoristas</h1>
-        <button id="novo" type="button">+ Avaliação</button>
-    </div>
-    <div>
-        <div id="lista"></div>
+    <div class="container-principal">
+        <div class="header-gerenciamento">
+            <h1 class="titulo-gerenciamento">Avalição de Motoristas</h1> 
+            <button id="novo" type="button" class="btn-novo-usuario">+ Nova Avaliação</button>
+        </div>
+        
+        <div class="tabela-container">
+            <div id="lista"></div>
+        </div>
     </div>
     <script src="../js/avaliacao.js"></script>
 </body>

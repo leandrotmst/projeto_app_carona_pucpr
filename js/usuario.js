@@ -15,8 +15,8 @@ async function buscar(){
     }
 }
 
-async function excluir(id){
-    const retorno = await fetch('../php/usuario_excluir.php?id_usuario='+id);
+async function excluir(id_usuario){
+    const retorno = await fetch('../php/usuario_excluir.php?id_usuario='+id_usuario);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -29,47 +29,43 @@ async function excluir(id){
 
 function preencherTabela(tabela){
     var html = `
-        <table>
-            <tr>
-                <th> Nome </th>
-                <th> | </th>
-                <th> Telefone </th>
-                <th> | </th>
-                <th> E-mail </th>
-                <th> | </th>
-                <th> Senha </th>
-                <th> | </th>
-                <th> Nascimento </th>
-                <th> | </th>
-                <th> Tipo </th>
-                <th> | </th>
-                <th> Ações </th>
-            </tr>
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>ID Usuário</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Senha</th>
+                    <th>Nascimento</th>
+                    <th>Tipo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
     
-    for(var i=0;i<tabela.length;i++){
+    for(var i=0; i < tabela.length; i++){
         html += `
             <tr>
+                <td> ${tabela[i].id_usuario} </td>
                 <td> ${tabela[i].nome} </td>
-                <td> | </td>
                 <td> ${tabela[i].telefone} </td>
-                <td> | </td>
                 <td> ${tabela[i].email} </td>
-                <td> | </td>
                 <td> ${tabela[i].senha} </td>
-                <td> | </td>
                 <td> ${tabela[i].nasc} </td>
-                <td> | </td>
                 <td> ${tabela[i].tipo} </td>
-                <td> | </td>
                 <td>
-                    <a href='usuario_alterar.html?id_usuario=${tabela[i].id_usuario}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id_usuario})'>Excluir</a>
+                    <a href='usuario_alterar.html?id_usuario=${tabela[i].id_usuario}' class='btn-alterar'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_usuario})' class='btn-excluir'>Excluir</a>
                 </td>
             </tr>
         `;
-
     }
-    html += '</table>';
+
+    html += `
+            </tbody>
+        </table>
+    `;
     document.getElementById('lista').innerHTML = html;
 }

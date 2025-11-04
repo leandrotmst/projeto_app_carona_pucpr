@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('novo').addEventListener('click', () => {
-    window.location.href = "novo_veiculo.html";
+    window.location.href = "veiculo_novo.html";
 });
 
 async function buscar(){
@@ -15,8 +15,8 @@ async function buscar(){
     }
 }
 
-async function excluir(id){
-    const retorno = await fetch('../php/veiculo_excluir.php?id_veiculo='+id);
+async function excluir(id_veiculo){
+    const retorno = await fetch('../php/veiculo_excluir.php?id_veiculo='+id_veiculo);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -29,40 +29,37 @@ async function excluir(id){
 
 function preencherTabela(tabela){
     var html = `
-        <table>
-            <tr>
-                <th> ID usuário </th>
-                <th> | </th>
-                <th> Modelo </th>
-                <th> | </th>
-                <th> Placa </th>
-                <th> | </th>
-                <th> Cor </th>
-                <th> | </th>
-                <th> Ações </th>
-            </tr>
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th> ID usuário </th>
+                    <th> Modelo </th>
+                    <th> Placa </th>
+                    <th> Cor </th>
+                    <th> Ações </th>
+                </tr>
+            </thead>
+            <tbody>
     `;
     
-    for(var i=0;i<tabela.length;i++){
+    for(var i=0; i < tabela.length; i++){
         html += `
             <tr>
                 <td> ${tabela[i].id_usuario} </td>
-                <td> | </td>
                 <td> ${tabela[i].modelo} </td>
-                <td> | </td>
                 <td> ${tabela[i].placa} </td>
-                <td> | </td>
                 <td> ${tabela[i].cor} </td>
-                <td> | </td>
                 <td>
-                    <a href='veiculo_alterar.html?id_veiculo=${tabela[i].id_veiculo}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id_veiculo})'>Excluir</a>
+                    <a href='veiculo_alterar.html?id_veiculo=${tabela[i].id_veiculo}' class='btn-alterar'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_veiculo})' class='btn-excluir'>Excluir</a>
                 </td>
-                <td> | </td>
             </tr>
         `;
-
     }
-    html += '</table>';
+
+    html += `
+            </tbody>
+        </table>
+    `;
     document.getElementById('lista').innerHTML = html;
 }

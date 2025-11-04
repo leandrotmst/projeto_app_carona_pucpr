@@ -15,8 +15,8 @@ async function buscar(){
     }
 }
 
-async function excluir(id){
-    const retorno = await fetch('../php/carona_excluir.php?id_carona='+id);
+async function excluir(id_carona){
+    const retorno = await fetch('../php/carona_excluir.php?id_carona='+id_carona);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -29,52 +29,45 @@ async function excluir(id){
 
 function preencherTabela(tabela){
     var html = `
-        <table>
-            <tr>
-                <th> ID Usuário (Motorista) </th>
-                <th> | </th>
-                <th> Origem </th>
-                <th> | </th>
-                <th> Destino </th>
-                <th> | </th>
-                <th> Data e hora de partida </th>
-                <th> | </th>
-                <th> ID Veículo </th>
-                <th> | </th>
-                <th> Vagas </th>
-                <th> | </th>
-                <th> Distância </th>
-                <th> | </th>
-                <th> Tempo Estimado </th>
-            </tr>
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>ID Usuário (Motorista)</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Data e hora de partida</th>
+                    <th>ID Veículo</th>
+                    <th>Vagas</th>
+                    <th>Distância</th>
+                    <th>Tempo Estimado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
     
-    for(var i=0;i<tabela.length;i++){
+    for(var i=0; i < tabela.length; i++){
         html += `
             <tr>
                 <td> ${tabela[i].id_usuario} </td>
-                <td> | </td>
                 <td> ${tabela[i].origem} </td>
-                <td> | </td>
                 <td> ${tabela[i].destino} </td>
-                <td> | </td>
                 <td> ${tabela[i].data_hora_partida} </td>
-                <td> | </td>
                 <td> ${tabela[i].veiculo} </td>
-                <td> | </td>
                 <td> ${tabela[i].vagas} </td>
-                <td> | </td>
                 <td> ${tabela[i].distancia} </td>
-                <td> | </td>
                 <td> ${tabela[i].tempo_estimado} </td>
                 <td>
-                    <a href='carona_alterar.html?id_carona=${tabela[i].id_carona}'>Alterar</a>
-                    <a href='#' onClick='excluir(${tabela[i].id_carona})'>Excluir</a>
+                    <a href='carona_alterar.html?id_carona=${tabela[i].id_carona}' class='btn-alterar'>Alterar</a>
+                    <a href='#' onClick='excluir(${tabela[i].id_carona})' class='btn-excluir'>Excluir</a>
                 </td>
             </tr>
         `;
-
     }
-    html += '</table>';
+
+    html += `
+            </tbody>
+        </table>
+    `;
     document.getElementById('lista').innerHTML = html;
 }
