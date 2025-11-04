@@ -1,0 +1,23 @@
+/* 1. Cor de Fundo da Página (Cinza claro da imagem) */
+body {
+    background-color: #f0f2f5; 
+    /* Adiciona um padding no topo para garantir que o conteúdo não fique escondido atrás da navbar fixa */
+    padding-top: 56px; 
+}
+
+/* 2. Cor da Navbar (Azul escuro/petróleo da imagem) */
+.bg-navbar {
+    background-color: #216a96 !important; 
+}
+
+/* 3. Estilo do Card de Boas-vindas */
+.welcome-card {
+    /* Borda suavemente arredondada, como na imagem */
+    border-radius: 8px; 
+}
+
+/* 4. Estilo do Título dentro do Card */
+.welcome-title {
+    /* Cor de texto mais escura, semelhante à imagem */
+    color: #1a4f78; 
+}

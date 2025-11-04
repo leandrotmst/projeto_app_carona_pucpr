@@ -1,0 +1,53 @@
+/* Cor de fundo do corpo (similar ao cinza claro da imagem) */
+body {
+    background-color: #f8f8f8;
+}
+
+/* Estilo para o container de login (a "caixa" branca) */
+.login-card {
+    /* Largura fixa para manter o visual compacto */
+    width: 100%;
+    max-width: 400px; 
+    /* Borda suavemente arredondada, como na imagem */
+    border-radius: 10px; 
+    /* Remove a borda padrão do card do Bootstrap */
+    border: none; 
+    /* Fundo branco */
+    background-color: #ffffff;
+}
+
+/* Estilo para o título "Sistema de Gestão" */
+.login-title {
+    /* Cor do texto (um azul escuro) */
+    color: #1a4f78; 
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+/* Estilo para o label (Usuário, Senha) */
+.login-label {
+    /* Cor e peso da fonte, para ficarem mais fortes */
+    color: #333;
+    font-weight: 500;
+}
+
+/* Estilo para o botão "Entrar" */
+.login-button {
+    /* Cor de fundo do botão (azul escuro, semelhante ao da imagem) */
+    background-color: #216a96; 
+    /* Cor da borda do botão */
+    border-color: #216a96;
+    /* Para quando o mouse passar por cima ou o botão estiver focado */
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito de hover para o botão */
+.login-button:hover {
+    background-color: #1a4f78; /* Um tom um pouco mais escuro no hover */
+    border-color: #1a4f78;
+}
+
+/* Para garantir que o botão e inputs fiquem um pouco maiores */
+.form-control-lg, .btn-lg {
+    padding: 0.75rem 1rem;
+}
