@@ -35,11 +35,12 @@ function preencherTabela(tabela){
                     <th>ID Usuário (Motorista)</th>
                     <th>Origem</th>
                     <th>Destino</th>
-                    <th>Data e hora de partida</th>
+                    <th>Data de partida</th>
+                    <th>Hora da partida</th>
                     <th>ID Veículo</th>
                     <th>Vagas</th>
-                    <th>Distância</th>
-                    <th>Tempo Estimado</th>
+                    <th>Distância (km)</th>
+                    <th>Tempo Estimado (min)</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -52,8 +53,9 @@ function preencherTabela(tabela){
                 <td> ${tabela[i].id_usuario} </td>
                 <td> ${tabela[i].origem} </td>
                 <td> ${tabela[i].destino} </td>
-                <td> ${tabela[i].data_hora_partida} </td>
-                <td> ${tabela[i].veiculo} </td>
+                <td> ${tabela[i].data_partida} </td>
+                <td> ${tabela[i].hora_partida} </td>
+                <td> ${tabela[i].id_veiculo} </td>
                 <td> ${tabela[i].vagas} </td>
                 <td> ${tabela[i].distancia} </td>
                 <td> ${tabela[i].tempo_estimado} </td>

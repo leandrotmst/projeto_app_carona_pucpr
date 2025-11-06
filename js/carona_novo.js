@@ -6,7 +6,8 @@ async function novo(){
     var id_usuario = document.getElementById("id_usuario").value;
     var origem = document.getElementById("origem").value;
     var destino = document.getElementById("destino").value;
-    var data_hora_partida = document.getElementById("data_hora_partida").value;
+    var hora_partida = document.getElementById("hora_partida").value;
+    var data_partida = document.getElementById("data_partida").value;
     var id_veiculo = document.getElementById("id_veiculo").value;
     var vagas = document.getElementById("vagas").value;
     var distancia = document.getElementById("distancia").value;
@@ -16,7 +17,8 @@ async function novo(){
     fd.append('id_usuario', id_usuario);
     fd.append('origem', origem);
     fd.append('destino', destino);
-    fd.append('data_hora_partida', data_hora_partida);
+    fd.append('hora_partida', hora_partida);
+    fd.append('data_partida', data_partida);
     fd.append('id_veiculo', id_veiculo);
     fd.append('vagas', vagas);
     fd.append('distancia', distancia);
