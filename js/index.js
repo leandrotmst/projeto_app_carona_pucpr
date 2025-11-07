@@ -1,24 +1,23 @@
-document.getElementById("entrar").addEventListener('click',function(){
+document.getElementById('entrar').addEventListener('click', ()=>{
     login();
 });
 
 async function login(){
-    var user  = document.getElementById("user").value;
-    var senha = document.getElementById("senha").value;
-    
-    if(user.trim()==="admin" && senha.trim()==="admin"){
-        const fd = new FormData();
-        fd.append("user", user);
-        fd.append("senha", senha);
+    var usuario = document.getElementById('usuario').value;
+    var senha = document.getElementById('senha').value;
+    const fd = new FormData();
+    fd.append("usuario", usuario);
+    fd.append("senha", senha);
 
-        // Login Admin
-        window.location.href = "home/admin.html";
+    const retorno = await fetch('../projeto_app_carona_pucpr/php/admin_login.php',{
+            method: "POST",
+            body: fd
+        }
+    );
+    const resposta = await retorno.json();
+    if(resposta.status=='ok'){
+        window.location.href = "../projeto_app_carona_pucpr/home/admin.html";
     }else{
-        const fd = new FormData();
-        fd.append("user", user);
-        fd.append("senha", senha);
-        
-        // Login User
-        window.location.href = "home/app.html";
+        alert('Credenciais inválidas');
     }
 }
