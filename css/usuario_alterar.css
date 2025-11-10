@@ -1,0 +1,49 @@
+/* Conteúdo do CSS é o mesmo para manter a consistência visual: */
+
+/* Cor de fundo do corpo (similar ao cinza claro da imagem) */
+body {
+    background-color: #f8f8f8;
+}
+
+/* Estilo para o container de login (a "caixa" branca) */
+.login-card {
+    max-width: 600px; 
+    border-radius: 10px; 
+    border: none; 
+    background-color: #ffffff;
+}
+
+/* Estilo para o título "Alterar Usuário" (azul escuro) */
+.login-title, .login-title-color {
+    color: #1a4f78 !important; 
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.login-title {
+    margin-bottom: 1.5rem; 
+}
+
+/* Estilo para o label */
+.login-label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Estilo para o botão "Salvar" */
+.login-button {
+    background-color: #216a96; 
+    border-color: #216a96;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efeito de hover para o botão */
+.login-button:hover {
+    background-color: #1a4f78; 
+    border-color: #1a4f78;
+}
+
+/* Inputs/Selects/Botões maiores */
+.form-control-lg, .btn-lg, .form-select.form-control-lg {
+    padding: 0.75rem 1rem;
+    height: auto; 
+}

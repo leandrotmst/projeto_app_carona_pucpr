@@ -10,8 +10,8 @@ async function novo(){
 
     const fd = new FormData();
     fd.append('id_usuario', id_usuario);
-    fd.append('placa', placa);
     fd.append('modelo', modelo);
+    fd.append('placa', placa);
     fd.append('cor', cor);
 
     const retorno = await fetch("../php/veiculo_novo.php",

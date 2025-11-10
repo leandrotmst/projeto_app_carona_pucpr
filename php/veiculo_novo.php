@@ -9,7 +9,7 @@
     // Simulando as informações que vem do front
     $id_usuario = (int)$_POST['id_usuario']; // ID do motorista
     $modelo = $_POST['modelo'];
-    $ano    = $_POST['placa'];
+    $placa    = $_POST['placa'];
     $cor    = $_POST['cor'];
 
     // Preparando para inserção no banco de dados

@@ -1,10 +1,10 @@
-/* usuario.css - 100% PURO CSS */
+/* avaliacao.css - Estilo de Gerenciamento (Baseado em usuario.css) */
 
 /* Definição de Cores Baseadas na Imagem */
 :root {
     --body-bg-color: #f8f9fa; /* Fundo geral da página (cinza claro) */
     --header-bg-color: #216a96; /* Azul do título e cabeçalho da tabela */
-    --novo-usuario-bg-color: #5cb85c; /* Verde do botão Novo Usuário */
+    --novo-usuario-bg-color: #5cb85c; /* Verde do botão Nova Avaliação */
     --alterar-btn-color: #5bc0de; /* Azul claro do botão Alterar */
     --excluir-btn-color: #d9534f; /* Vermelho do botão Excluir */
 }
@@ -40,7 +40,7 @@ body {
     margin: 0;
 }
 
-/* Estilo do botão Novo Usuário */
+/* Estilo do botão Nova Avaliação */
 .btn-novo-usuario {
     background-color: var(--novo-usuario-bg-color);
     border: 1px solid var(--novo-usuario-bg-color);
@@ -63,7 +63,7 @@ body {
     overflow: hidden; /* Importante para cortar o cabeçalho arredondado */
 }
 
-/* Estilo para a tabela em si */
+/* Estilo para a tabela em si (A classe deve ser usada pelo JS) */
 .table-custom {
     width: 100%;
     border-collapse: collapse; /* Remove espaçamento entre células */

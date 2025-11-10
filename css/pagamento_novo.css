@@ -1,0 +1,49 @@
+/* pagamento_novo.css - Padrão de Formulário */
+
+/* Cor de fundo do corpo (similar ao cinza claro da imagem) */
+body {
+    background-color: #f8f8f8;
+}
+
+/* Estilo para o container do card (a "caixa" branca) */
+.login-card {
+    max-width: 500px; /* Largura padrão para formulários de item */
+    border-radius: 10px; 
+    border: none; 
+    background-color: #ffffff;
+}
+
+/* Estilo para o título (azul escuro) */
+.login-title {
+    color: #1a4f78 !important;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo para o label */
+.login-label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Estilo para o botão "Salvar" (Primário) */
+.login-button {
+    background-color: #216a96; 
+    border-color: #216a96;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    padding: 0.75rem 1rem; 
+    font-weight: 600;
+}
+
+/* Efeito de hover para o botão Primário */
+.login-button:hover {
+    background-color: #1a4f78; 
+    border-color: #1a4f78;
+}
+
+/* Estilos de inputs e selects */
+.form-control-lg, .form-select.form-control-lg {
+    padding: 0.75rem 1rem;
+    height: auto;
+}

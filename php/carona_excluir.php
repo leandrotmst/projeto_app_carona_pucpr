@@ -24,7 +24,7 @@
         }else{
           $retorno = [
                 'status'   => 'nok',
-                'mensagem' => 'Registro não excluído',
+                'mensagem' => 'Registro não pode ser excluído. Cannot delete or update a parent row: a foreign key constraint fails (`projeto_app_carona_pucpr`.`avaliacao`, CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_carona`) REFERENCES `carona` (`id_carona`))',
                 'data'     => []
             ];
         }

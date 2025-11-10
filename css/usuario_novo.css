@@ -1,23 +1,56 @@
-:root {
-    --uni-blue: #1e3a8a; /* Azul escuro universitário */
-    --uni-accent: #f59e0b; /* Laranja de contraste */
-}
-
+/* Cor de fundo do corpo (similar ao cinza claro da imagem) */
 body {
-    margin-top: -45px;
-    font-family: 'Inter', sans-serif;
-    background-color: #f8f9fa; /* Fundo cinza claro */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #f8f8f8;
 }
 
-.text-uni-blue { color: var(--uni-blue) !important; }
-.btn-uni-accent { background-color: var(--uni-accent); border-color: var(--uni-accent); color: #fff; }
-.btn-uni-accent:hover { background-color: #d99009; border-color: #d99009; }
-/* Foco personalizado para inputs */
-.form-control:focus, .form-select:focus {
-    border-color: var(--uni-blue);
-    box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25);
+/* Estilo para o container de login (a "caixa" branca) */
+.login-card {
+    /* Largura ajustável para formulários maiores */
+    max-width: 600px; 
+    /* Borda suavemente arredondada, como na imagem */
+    border-radius: 10px; 
+    /* Remove a borda padrão do card do Bootstrap */
+    border: none; 
+    /* Fundo branco */
+    background-color: #ffffff;
+}
+
+/* Estilo para o título "Cadastre-se" e link de login (azul escuro) */
+.login-title, .login-title-color {
+    /* Cor do texto (um azul escuro) */
+    color: #1a4f78 !important; /* Usado !important para garantir a cor sobre classes Bootstrap */
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.login-title {
+    margin-bottom: 1.5rem; /* Ajuste o espaço inferior */
+}
+
+/* Estilo para o label (Nome, Telefone, etc.) */
+.login-label {
+    /* Cor e peso da fonte, para ficarem mais fortes */
+    color: #333;
+    font-weight: 500;
+}
+
+/* Estilo para o botão "Cadastrar" */
+.login-button {
+    /* Cor de fundo do botão (azul escuro, semelhante ao da imagem) */
+    background-color: #216a96; 
+    /* Cor da borda do botão */
+    border-color: #216a96;
+    /* Para quando o mouse passar por cima ou o botão estiver focado */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efeito de hover para o botão */
+.login-button:hover {
+    background-color: #1a4f78; /* Um tom um pouco mais escuro no hover */
+    border-color: #1a4f78;
+}
+
+/* Para garantir que o botão e inputs/selects fiquem um pouco maiores */
+.form-control-lg, .btn-lg, .form-select.form-control-lg {
+    padding: 0.75rem 1rem;
+    height: auto; /* Garante que selects e inputs tenham altura consistente */
 }

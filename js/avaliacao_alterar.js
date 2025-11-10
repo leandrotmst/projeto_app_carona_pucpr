@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const url = new URLSearchParams(window.location.search);
-    const id = url.get('id_avaliacao');
+    const id_avaliacao = url.get('id_avaliacao');
 
-    buscar(id);
+    buscar(id_avaliacao);
 });
 
-async function buscar(id){
+async function buscar(id_avaliacao){
     const retorno = await 
-    fetch("../php/avaliacao_get.php?id_avaliacao="+id);
+    fetch("../php/avaliacao_get.php?id_avaliacao="+id_avaliacao);
     const resposta = await retorno.json();
 
     if(resposta.status=='ok'){
@@ -34,9 +34,8 @@ async function alterar(){
     var id_carona    = document.getElementById("id_carona").value;
     var id_avaliado  = document.getElementById("id_avaliado").value;
     var id_avaliador = document.getElementById("id_avaliador").value;
-    var nota         = String(registro.nota);
-    var radio = document.querySelector('input[name="nota"][value="'+nota+'"]');
-    if(radio) radio.checked = true;
+    var radio = document.querySelector('input[name="nota"]:checked');
+    var nota = radio ? radio.value : '';
     var comentario   = document.getElementById("comentario").value;
     var id_avaliacao   = document.getElementById("id_avaliacao").value;
 
@@ -44,7 +43,7 @@ async function alterar(){
     fd.append('id_carona', id_carona);
     fd.append('id_avaliado', id_avaliado);
     fd.append('id_avaliador', id_avaliador);
-    fd.append('senha', senha);
+    fd.append('nota', nota);
     fd.append('comentario', comentario);
 
     const retorno = await 

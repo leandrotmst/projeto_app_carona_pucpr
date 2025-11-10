@@ -29,7 +29,7 @@ async function novo(){
 
         if(resposta.status=='ok'){
             alert("Sucesso: " + resposta.mensagem);
-            window.location.href = 'feed.html';
+            window.location.href = 'usuario.html';
         }else{
             alert("Erro: " + resposta.mensagem);
         }
